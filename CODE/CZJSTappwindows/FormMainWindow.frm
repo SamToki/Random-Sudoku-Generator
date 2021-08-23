@@ -3405,7 +3405,7 @@ Public preventinfiniteloopcounter2 As Integer
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 3: Call SudokuChecker: Call Refresher: Exit Sub
                     Case Else
-                        MsgBox "CAUTION: Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9, and 0 for ""Clear"", Enter for ""Start New Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "CAUTION: Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9, and 0 for ""Clear"", Enter for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 3: Call SudokuChecker: Call Refresher: Exit Sub
                 End Select
         End Select
@@ -3472,7 +3472,7 @@ Public preventinfiniteloopcounter2 As Integer
                         If sudokublockdata(forloop1)(forloop2) = 0 Then tempvariant = 888
                     Next
                 Next
-                If ((sudokutotalfilled >= sudokutotalfilling) And (tempvariant = 0) And (gameinputstep = 1)) Then MsgBox "Congratulations!! You have solved the Sudoku.", vbInformation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                If ((sudokutotalfilled >= sudokutotalfilling) And (tempvariant = 0) And (gameinputstep = 1)) Then MsgBox "Congrats! You have solved the Sudoku.", vbInformation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
 
         'Row and column number...
@@ -3794,7 +3794,7 @@ Public preventinfiniteloopcounter2 As Integer
     'Generate Sudoku...
     Public Sub RandomNumberGenerator()
         If lotterytotal = 0 Then
-            MsgBox "ERROR: Calling function ""RandomNumberGenerator"" when variant ""lotterytotal"" is 0." & vbCrLf & "Please send a feedback to us so as to help solve the problem. Thank you very much.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+            MsgBox "ERROR: Calling function ""RandomNumberGenerator"" when variant ""lotterytotal"" is 0." & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End If
 
         lotterynumber = 0
@@ -3816,7 +3816,7 @@ SudokuGenerator_Relocate_:
         preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
         If preventinfiniteloopcounter1 > 100 Then
             'Abort generation...
-            MsgBox "WARNING: Unable to continue building this Sudoku grid anymore." & vbCrLf & "Random Sudoku generation has failed." & vbCrLf & "Please try to adjust the settings so as to make it harder to fail." & vbCrLf & "We will abort the generation and reset the game later.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+            MsgBox "CAUTION: Unable to continue generating this Sudoku grid anymore." & vbCrLf & "Random Sudoku generation has failed." & vbCrLf & "Please try to adjust the settings so as to make it easier to generate.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
             Call CmdStartReset_Click: Exit Sub
         End If
 
@@ -3915,7 +3915,7 @@ TimerProgressbarAnimation_Skip3_:
                 If sudokucurrentcolumnanimation < 9 Then sudokucurrentcolumnanimation = sudokucurrentcolumnanimation + 1
                 LabelColumn(sudokucurrentcolumn).ForeColor = &H0&
             Case Else
-                MsgBox "ERROR: Game input step is out of range." & vbCrLf & "Please send a feedback to us so as to help solve the problem. Thank you very much.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                MsgBox "ERROR: Game input step is out of range." & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
 
         'Highlight current block with light green or red color...
@@ -3934,7 +3934,7 @@ TimerProgressbarAnimation_Skip3_:
                 Case 3
                     LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0D0FF
                 Case Else
-                    MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & "Please send a feedback to us so as to help solve the problem. Thank you very much.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                    MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
             End Select
         End If
     End Sub
