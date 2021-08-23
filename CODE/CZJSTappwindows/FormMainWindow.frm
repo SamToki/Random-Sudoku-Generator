@@ -5,7 +5,7 @@ Begin VB.Form FormMainWindow
    AutoRedraw      =   -1  'True
    BackColor       =   &H00D0D0D0&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Random Sudoku Generator　v0.11　by Sam Toki"
+   Caption         =   "Random Sudoku Generator v0.22eng"
    ClientHeight    =   7260
    ClientLeft      =   45
    ClientTop       =   750
@@ -56,7 +56,7 @@ Begin VB.Form FormMainWindow
       Begin VB.TextBox TextboxInput 
          Alignment       =   2  'Center
          Appearance      =   0  'Flat
-         BackColor       =   &H00C0C000&
+         BackColor       =   &H00709000&
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -294,7 +294,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -341,7 +341,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -364,7 +364,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -387,7 +387,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -410,7 +410,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -433,7 +433,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -456,7 +456,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -479,7 +479,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -502,7 +502,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -525,7 +525,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -593,7 +593,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -615,7 +615,7 @@ Begin VB.Form FormMainWindow
             Name            =   "MS Sans Serif"
             Size            =   12
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -664,7 +664,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -721,7 +721,7 @@ Begin VB.Form FormMainWindow
       _cy             =   767
    End
    Begin VB.Shape ShapeProgressbar 
-      BackColor       =   &H00FF8800&
+      BackColor       =   &H00FF9000&
       BackStyle       =   1  'Opaque
       BorderColor     =   &H000000FF&
       BorderStyle     =   0  'Transparent
@@ -785,7 +785,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -808,7 +808,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -831,7 +831,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -854,7 +854,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -877,7 +877,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -900,7 +900,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -923,7 +923,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -946,7 +946,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -969,7 +969,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1014,7 +1014,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1037,7 +1037,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1060,7 +1060,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1083,7 +1083,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1106,7 +1106,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1129,7 +1129,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1152,7 +1152,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1175,7 +1175,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1221,7 +1221,7 @@ Begin VB.Form FormMainWindow
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -1239,22 +1239,22 @@ Begin VB.Form FormMainWindow
       Appearance      =   0  'Flat
       BackColor       =   &H000000FF&
       BackStyle       =   0  'Transparent
-      Caption         =   "N/A"
+      Caption         =   "00:00:00"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00000000&
       Height          =   330
-      Left            =   11865
+      Left            =   10815
       TabIndex        =   133
-      Top             =   6825
-      Width           =   1380
+      Top             =   210
+      Width           =   1170
    End
    Begin VB.Line Line 
       BorderColor     =   &H00404040&
@@ -3015,87 +3015,32 @@ Begin VB.Form FormMainWindow
       Top             =   6195
       Width           =   6210
    End
-   Begin VB.Menu MenuSoundSwitch 
-      Caption         =   "Soun&d ON"
-   End
-   Begin VB.Menu MenuAbout 
-      Caption         =   "&About"
-      Begin VB.Menu MenuAboutName 
-         Caption         =   "Random Sudoku Generator"
-      End
-      Begin VB.Menu MenuAboutVersion 
-         Caption         =   "v0.11 Beta Version　|　for Windows 7,8,10　|　English (US)"
-      End
-      Begin VB.Menu MenuAboutDate 
-         Caption         =   "Last compiled on Thu, Sep 24, 2020"
-      End
-      Begin VB.Menu MenuAboutFirst 
-         Caption         =   "First version built on Sat, Mar 28, 2020"
-      End
-      Begin VB.Menu MenuAbout1_ 
-         Caption         =   "-"
-      End
-      Begin VB.Menu MenuAboutAuthor 
-         Caption         =   "Author: Sam Toki"
-      End
-      Begin VB.Menu MenuAboutOrganization 
-         Caption         =   "Organization: SAM TOKI STUDIO"
-      End
-      Begin VB.Menu MenuAboutFrom 
-         Caption         =   "From: Xidian University, China"
-      End
-      Begin VB.Menu MenuAboutContact 
-         Caption         =   "Contact: SamToki@outlook.com"
-      End
-      Begin VB.Menu MenuAbout2_ 
-         Caption         =   "-"
-      End
-      Begin VB.Menu MenuAboutCopyright 
-         Caption         =   "TM ＆ (C) 2015-2020 SAM TOKI STUDIO. All rights reserved."
-      End
-      Begin VB.Menu MenuAboutTrademark 
-         Caption         =   "SAM TOKI STUDIO is a trademark of CZJ Software Technologies (CZJST) Inc. in the P.R.C and other countries."
-      End
-      Begin VB.Menu MenuAbout3_ 
-         Caption         =   "-"
-      End
-      Begin VB.Menu MenuAboutCommercial 
-         Caption         =   "Commercial use of this software is strictly prohibited."
-      End
-   End
-   Begin VB.Menu Menu1_ 
-      Caption         =   "　|　"
-      Enabled         =   0   'False
-   End
-   Begin VB.Menu MenuLanguage 
-      Caption         =   "Ａ字あ (&L)"
-      Begin VB.Menu MenuLanguageENG 
-         Caption         =   "English (United States)"
+   Begin VB.Menu Menu 
+      Caption         =   "Menu"
+      Begin VB.Menu MenuSoundSwitch 
+         Caption         =   "Sound"
          Checked         =   -1  'True
-         Shortcut        =   +{F1}
+         Shortcut        =   {F2}
       End
-      Begin VB.Menu MenuLanguageCHS 
-         Caption         =   "中文（简体）"
-         Enabled         =   0   'False
-         Shortcut        =   +{F2}
+      Begin VB.Menu MenuEXIT 
+         Caption         =   "EXIT"
+         Shortcut        =   {F4}
       End
-      Begin VB.Menu MenuLanguageCHT 
-         Caption         =   "中文（繁體）"
-         Enabled         =   0   'False
-         Shortcut        =   +{F3}
+      Begin VB.Menu Menu1_ 
+         Caption         =   "-"
       End
-      Begin VB.Menu MenuLanguageJPN 
-         Caption         =   "日本語"
-         Enabled         =   0   'False
-         Shortcut        =   +{F4}
+      Begin VB.Menu MenuAbout 
+         Caption         =   "About"
+         Begin VB.Menu MenuAboutGitHub 
+            Caption         =   "GitHub @SamToki"
+         End
+         Begin VB.Menu MenuAboutLicense 
+            Caption         =   "Released under license GNU GPL v3"
+         End
+         Begin VB.Menu MenuAboutCopyright 
+            Caption         =   "TM && (C) 2015-2021 SAM TOKI STUDIO"
+         End
       End
-   End
-   Begin VB.Menu Menu2_ 
-      Caption         =   "　|　"
-      Enabled         =   0   'False
-   End
-   Begin VB.Menu MenuEXIT 
-      Caption         =   "E&XIT"
    End
 End
 Attribute VB_Name = "FormMainWindow"
@@ -3113,15 +3058,15 @@ Attribute VB_Exposed = False
 '  Random Sudoku Generator
 '
 '  Powered by Sam Toki
-'  Version: v0.11 Beta Version ENG
-'  Date:    09/20/2020 (Sun.)
-'  History: First version v0.10 Beta was built on 03/28/2020.
+'  Version: v0.22eng
+'  Date:    2021/08/23 (Mon)
+'  History: First version v0.10 was built on 2020/03/28.
 '
 '  WARNING: Commercial use of this computer software is strictly prohibited.
 '           Open source license:      GNU GPL v3
 '           Creative Commons license: CC BY-NC 3.0
 '
-'  Copyright: TM & (C) 2015-2020 SAM TOKI STUDIO. All rights reserved.
+'  Copyright: TM & (C) 2015-2021 SAM TOKI STUDIO. All rights reserved.
 '             SAM TOKI STUDIO is a trademark of CZJ Software Technologies (CZJST) Inc. in the P.R.C and other countries.
 '
 '  ---------------------------------------------------------------------------------------------------------------------
@@ -3137,7 +3082,6 @@ Attribute VB_Exposed = False
 Option Explicit
 
 'Declare Menu...
-Public setlanguage As String
 Public soundswitch As Boolean
 
 'Declare Game...
@@ -3192,12 +3136,13 @@ Public preventinfiniteloopcounter2 As Integer
 '[] LOAD []
 
     Sub Form_Load()
-        'Load and Initialization...
-
-        'Initialize Menu...
-        setlanguage = "ENG"
         soundswitch = True
+        dontannoymeagain1 = False
+        setanimationswitch = True
 
+        Call Initialization
+    End Sub
+    Sub Initialization()
         'Initialize Game...
         gamestatus = 0
         gameinputstep = 0
@@ -3251,48 +3196,28 @@ Public preventinfiniteloopcounter2 As Integer
         labelcolumnindicatoranimationtarget = 289
         sudokucurrentrowanimation = 0
         sudokucurrentcolumnanimation = 0
-
-        'Initialize Dialog...
-        dontannoymeagain1 = False
-
-        'Initialize Others...
-        setanimationswitch = True
     End Sub
 
 '  ---------------------------------------------------------------------------------------------------------------------
 
 '[] COMMANDS []
 
-    'CMD Language...
-    Public Sub MenuLanguageENG_Click()
-        'Call ModuleLoadLanguage.LoadLanguageENG
-    End Sub
-    Public Sub MenuLanguageCHS_Click()
-        'Call ModuleLoadLanguage.LoadLanguageCHS
-    End Sub
-    Public Sub MenuLanguageCHT_Click()
-        'Call ModuleLoadLanguage.LoadLanguageCHT
-    End Sub
-    Public Sub MenuLanguageJPN_Click()
-        'Call ModuleLoadLanguage.LoadLanguageJPN
-    End Sub
-
     'CMD Menu...
+    Public Sub MenuSoundSwitch_Click()
+        Select Case soundswitch
+            Case True
+                soundswitch = False
+                MenuSoundSwitch.Checked = False
+            Case False
+                soundswitch = True
+                MenuSoundSwitch.Checked = True
+        End Select
+    End Sub
     Public Sub MenuEXIT_Click()
         End
     End Sub
     Public Sub CmdEXIT_Click()
         Call MenuEXIT_Click
-    End Sub
-    Public Sub MenuSoundSwitch_Click()
-        Select Case soundswitch
-            Case True
-                soundswitch = False
-                MenuSoundSwitch.Caption = "Soun&d OFF"
-            Case False
-                soundswitch = True
-                MenuSoundSwitch.Caption = "Soun&d ON"
-        End Select
     End Sub
 
     'CMD Settings...
@@ -3316,12 +3241,12 @@ Public preventinfiniteloopcounter2 As Integer
     Public Sub CmdStartReset_Click()
         If gamestatus = 0 Then
             If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Proximity Connection.wav"
-            Call Form_Load: gamestatus = 1: Call Refresher
+            Call Initialization: gamestatus = 1: Call Refresher
             LabelStatusbar.Caption = "Game started!"
         Else
             CmdStartReset.SetFocus
             If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Recycle.wav"
-            Call Form_Load: gamestatus = 0: Call Refresher
+            Call Initialization: gamestatus = 0: Call Refresher
             LabelStatusbar.Caption = "Game reset! Now you can adjust settings."
         End If
     End Sub
@@ -3567,11 +3492,11 @@ Public preventinfiniteloopcounter2 As Integer
                 Case 0
                     LabelSudokuBlock(forloop1).BackColor = &HFFFFFF: LabelSudokuBlock(forloop1).ForeColor = &H0&
                 Case 1
-                    LabelSudokuBlock(forloop1).BackColor = &HE0E0E0: LabelSudokuBlock(forloop1).ForeColor = &H0&
+                    LabelSudokuBlock(forloop1).BackColor = &HC0C0C0: LabelSudokuBlock(forloop1).ForeColor = &H0&
                 Case 2
                     LabelSudokuBlock(forloop1).BackColor = &HFFFFFF: LabelSudokuBlock(forloop1).ForeColor = &HFF&
                 Case 3
-                    LabelSudokuBlock(forloop1).BackColor = &HE0E0E0: LabelSudokuBlock(forloop1).ForeColor = &HFF&
+                    LabelSudokuBlock(forloop1).BackColor = &HC0C0C0: LabelSudokuBlock(forloop1).ForeColor = &HFF&
             End Select
             LabelSudokuBlock(forloop1).BorderStyle = 0
         Next
@@ -3603,7 +3528,7 @@ Public preventinfiniteloopcounter2 As Integer
             End If
             If tempvariant >= 9 Then
                 If tempvariant = 9 Then
-                    LabelNumberCount(forloop1).ForeColor = &HC000&
+                    LabelNumberCount(forloop1).ForeColor = &HD000&
                 Else
                     LabelNumberCount(forloop1).ForeColor = &HFF&
                 End If
@@ -3628,13 +3553,13 @@ Public preventinfiniteloopcounter2 As Integer
         'Progressbar...
         Select Case gamestatus
             Case 0
-                ShapeProgressbar.BackColor = &HFF8800
+                ShapeProgressbar.BackColor = &HFF9000
                 progressbaranimationtarget = 0
             Case 1
-                ShapeProgressbar.BackColor = &HFF8800
+                ShapeProgressbar.BackColor = &HFF9000
                 progressbaranimationtarget = (sudokutotalgenerated / sudokutotalfixed) * 6210
             Case 2
-                ShapeProgressbar.BackColor = &HC000&
+                ShapeProgressbar.BackColor = &HD000&
                 progressbaranimationtarget = (sudokutotalfilled / sudokutotalfilling) * 6210
         End Select
 
@@ -3979,14 +3904,14 @@ TimerProgressbarAnimation_Skip3_:
             Case 1
                 Exit Sub
             Case 2
-                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HFFF0E0
+                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HFFF0D0
                 If sudokucurrentrowanimation < 9 Then sudokucurrentrowanimation = sudokucurrentrowanimation + 1
                 LabelRow(sudokucurrentrow).ForeColor = &H0&
             Case 3
-                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HFFF0E0
+                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HFFF0D0
                 If sudokucurrentrowanimation < 9 Then sudokucurrentrowanimation = sudokucurrentrowanimation + 1
                 LabelRow(sudokucurrentrow).ForeColor = &H0&
-                LabelSudokuBlock(sudokucurrentcolumnanimation * 9 - 9 + sudokucurrentcolumn).BackColor = &HFFF0E0
+                LabelSudokuBlock(sudokucurrentcolumnanimation * 9 - 9 + sudokucurrentcolumn).BackColor = &HFFF0D0
                 If sudokucurrentcolumnanimation < 9 Then sudokucurrentcolumnanimation = sudokucurrentcolumnanimation + 1
                 LabelColumn(sudokucurrentcolumn).ForeColor = &H0&
             Case Else
@@ -4001,13 +3926,13 @@ TimerProgressbarAnimation_Skip3_:
             'Change backcolor...
             Select Case sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn)
                 Case 0
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFC0
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0FFD0
                 Case 1
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0C0FF
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0D0FF
                 Case 2
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFC0
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0FFD0
                 Case 3
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0C0FF
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0D0FF
                 Case Else
                     MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & "Please send a feedback to us so as to help solve the problem. Thank you very much.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
             End Select
