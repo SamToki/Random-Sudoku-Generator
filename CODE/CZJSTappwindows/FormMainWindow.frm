@@ -3108,9 +3108,9 @@ Public lotterytotal As Integer
 Public lotterynumber As Integer
 
 'Declare Animation...
-Public progressbaranimationtarget As Long  'Range: 0~6210
-Public labelrowindicatoranimationtarget As Long  'Range: 364~6270
-Public labelcolumnindicatoranimationtarget As Long  'Range: 289~6195
+Public progressbaranimationtarget As Integer  'Range: 0~6210
+Public labelrowindicatoranimationtarget As Integer  'Range: 364~6270
+Public labelcolumnindicatoranimationtarget As Integer  'Range: 289~6195
 Public sudokucurrentrowanimation As Integer
 Public sudokucurrentcolumnanimation As Integer
 
