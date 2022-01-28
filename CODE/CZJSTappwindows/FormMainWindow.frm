@@ -5,7 +5,7 @@ Begin VB.Form FormMainWindow
    AutoRedraw      =   -1  'True
    BackColor       =   &H00D0D0D0&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Random Sudoku Generator v0.22eng"
+   Caption         =   "Random Sudoku Generator v0.23eng"
    ClientHeight    =   7260
    ClientLeft      =   45
    ClientTop       =   750
@@ -288,7 +288,7 @@ Begin VB.Form FormMainWindow
          Width           =   540
       End
       Begin VB.CommandButton CmdStartReset 
-         Caption         =   "START / RESET"
+         Caption         =   "&START / RESET"
          Default         =   -1  'True
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -631,7 +631,7 @@ Begin VB.Form FormMainWindow
          Appearance      =   0  'Flat
          BackColor       =   &H000000FF&
          BackStyle       =   0  'Transparent
-         Caption         =   "Maximum amount of fixed blocks in a large block:"
+         Caption         =   "&Maximum amount of fixed blocks in a large block:"
          ForeColor       =   &H00000000&
          Height          =   330
          Left            =   315
@@ -643,7 +643,7 @@ Begin VB.Form FormMainWindow
          Appearance      =   0  'Flat
          BackColor       =   &H000000FF&
          BackStyle       =   0  'Transparent
-         Caption         =   "Amount of all fixed blocks:"
+         Caption         =   "&Amount of all fixed blocks:"
          ForeColor       =   &H00000000&
          Height          =   330
          Left            =   315
@@ -659,7 +659,7 @@ Begin VB.Form FormMainWindow
    End
    Begin VB.CommandButton CmdEXIT 
       Cancel          =   -1  'True
-      Caption         =   "EXIT"
+      Caption         =   "E&XIT"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   12
@@ -3016,29 +3016,40 @@ Begin VB.Form FormMainWindow
       Width           =   6210
    End
    Begin VB.Menu Menu 
-      Caption         =   "Menu"
+      Caption         =   "&Menu"
       Begin VB.Menu MenuSoundSwitch 
-         Caption         =   "Sound"
+         Caption         =   "S&ound"
          Checked         =   -1  'True
          Shortcut        =   {F2}
       End
       Begin VB.Menu MenuEXIT 
-         Caption         =   "EXIT"
+         Caption         =   "E&XIT"
          Shortcut        =   {F4}
       End
       Begin VB.Menu Menu1_ 
          Caption         =   "-"
       End
       Begin VB.Menu MenuAbout 
-         Caption         =   "About"
+         Caption         =   "&About"
+         Begin VB.Menu MenuAboutDownload 
+            Caption         =   "&Download latest version..."
+         End
+         Begin VB.Menu MenuAboutUpdate 
+            Caption         =   "Check for &update manually..."
+         End
          Begin VB.Menu MenuAboutGitHub 
-            Caption         =   "GitHub @SamToki"
+            Caption         =   "&GitHub @SamToki user page..."
          End
          Begin VB.Menu MenuAboutLicense 
-            Caption         =   "Released under license GNU GPL v3"
+            Caption         =   "Released under &license GNU GPL v3..."
          End
          Begin VB.Menu MenuAboutCopyright 
-            Caption         =   "TM && (C) 2015-2021 SAM TOKI STUDIO"
+            Caption         =   "TM && (C) 2015-2022 SAM TOKI STUDIO"
+            Enabled         =   0   'False
+         End
+         Begin VB.Menu MenuAboutDate 
+            Caption         =   "2022/01/28"
+            Enabled         =   0   'False
          End
       End
    End
@@ -3058,15 +3069,15 @@ Attribute VB_Exposed = False
 '  Random Sudoku Generator
 '
 '  Powered by Sam Toki
-'  Version: v0.22eng
-'  Date:    2021/08/23 (Mon)
+'  Version: v0.23eng
+'  Date:    2022/01/28 (Fri)
 '  History: First version v0.10 was built on 2020/03/28.
 '
 '  WARNING: Commercial use of this computer software is strictly prohibited.
 '           Open source license:      GNU GPL v3
 '           Creative Commons license: CC BY-NC 3.0
 '
-'  Copyright: TM & (C) 2015-2021 SAM TOKI STUDIO. All rights reserved.
+'  Copyright: TM & (C) 2015-2022 SAM TOKI STUDIO. All rights reserved.
 '             SAM TOKI STUDIO is a trademark of CZJ Software Technologies (CZJST) Inc. in the P.R.C and other countries.
 '
 '  ---------------------------------------------------------------------------------------------------------------------
@@ -3121,7 +3132,7 @@ Public dontannoymeagain1 As Boolean
 'Declare Others...
 Public setanimationswitch As Boolean
 
-'Declare Temp...
+'Declare Temporary Variants...
 Public forloop1 As Integer
 Public forloop2 As Integer
 Public forloop3 As Integer
@@ -3130,6 +3141,12 @@ Public forloop5 As Integer
 Public tempvariant As Integer
 Public preventinfiniteloopcounter1 As Integer
 Public preventinfiniteloopcounter2 As Integer
+
+'Declare Special...
+Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" _
+    (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, _
+     ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Private Const SW_SHOW = 5
 
 '  ---------------------------------------------------------------------------------------------------------------------
 
@@ -3218,6 +3235,18 @@ Public preventinfiniteloopcounter2 As Integer
     End Sub
     Public Sub CmdEXIT_Click()
         Call MenuEXIT_Click
+    End Sub
+    Public Sub MenuAboutDownload_Click()
+        Call ShellExecute(Me.hWnd, "open", "https://github.com/SamToki/VB6---Random-Sudoku-Generator/raw/main/RELEASE/Random%20Sudoku%20Generator.exe", "", "", SW_SHOW)
+    End Sub
+    Public Sub MenuAboutUpdate_Click()
+        Call ShellExecute(Me.hWnd, "open", "https://github.com/SamToki/VB6---Random-Sudoku-Generator", "", "", SW_SHOW)
+    End Sub
+    Public Sub MenuAboutGitHub_Click()
+        Call ShellExecute(Me.hWnd, "open", "https://github.com/SamToki", "", "", SW_SHOW)
+    End Sub
+    Public Sub MenuAboutLicense_Click()
+        Call ShellExecute(Me.hWnd, "open", "https://www.gnu.org/licenses/gpl-3.0.html", "", "", SW_SHOW)
     End Sub
 
     'CMD Settings...
