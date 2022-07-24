@@ -5,7 +5,7 @@ Begin VB.Form FormMainWindow
    AutoRedraw      =   -1  'True
    BackColor       =   &H00D0D0D0&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Random Sudoku Generator v0.23eng"
+   Caption         =   "Random Sudoku Generator v0.24eng"
    ClientHeight    =   7260
    ClientLeft      =   45
    ClientTop       =   750
@@ -48,7 +48,7 @@ Begin VB.Form FormMainWindow
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   2850
+      Height          =   2955
       Left            =   7035
       TabIndex        =   103
       Top             =   945
@@ -74,7 +74,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":2524
          MousePointer    =   99  'Custom
          TabIndex        =   124
-         Top             =   1995
+         Top             =   2100
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -95,7 +95,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":2676
          MousePointer    =   99  'Custom
          TabIndex        =   123
-         Top             =   1995
+         Top             =   2100
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -116,7 +116,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":27C8
          MousePointer    =   99  'Custom
          TabIndex        =   121
-         Top             =   1995
+         Top             =   2100
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -137,7 +137,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":291A
          MousePointer    =   99  'Custom
          TabIndex        =   119
-         Top             =   1995
+         Top             =   2100
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -158,7 +158,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":2A6C
          MousePointer    =   99  'Custom
          TabIndex        =   117
-         Top             =   1995
+         Top             =   2100
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -179,7 +179,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":2BBE
          MousePointer    =   99  'Custom
          TabIndex        =   115
-         Top             =   1995
+         Top             =   2100
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -200,7 +200,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":2D10
          MousePointer    =   99  'Custom
          TabIndex        =   113
-         Top             =   1260
+         Top             =   1365
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -221,7 +221,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":2E62
          MousePointer    =   99  'Custom
          TabIndex        =   111
-         Top             =   1260
+         Top             =   1365
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -242,7 +242,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":2FB4
          MousePointer    =   99  'Custom
          TabIndex        =   109
-         Top             =   1260
+         Top             =   1365
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -263,7 +263,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":3106
          MousePointer    =   99  'Custom
          TabIndex        =   107
-         Top             =   1260
+         Top             =   1365
          Width           =   540
       End
       Begin VB.CommandButton CmdNumber 
@@ -284,7 +284,7 @@ Begin VB.Form FormMainWindow
          MouseIcon       =   "FormMainWindow.frx":3258
          MousePointer    =   99  'Custom
          TabIndex        =   105
-         Top             =   1260
+         Top             =   1365
          Width           =   540
       End
       Begin VB.CommandButton CmdStartReset 
@@ -299,7 +299,7 @@ Begin VB.Form FormMainWindow
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   435
+         Height          =   540
          Left            =   420
          MouseIcon       =   "FormMainWindow.frx":33AA
          MousePointer    =   99  'Custom
@@ -351,7 +351,7 @@ Begin VB.Form FormMainWindow
          Index           =   9
          Left            =   3780
          TabIndex        =   122
-         Top             =   2205
+         Top             =   2310
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -374,7 +374,7 @@ Begin VB.Form FormMainWindow
          Index           =   8
          Left            =   2835
          TabIndex        =   120
-         Top             =   2205
+         Top             =   2310
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -397,7 +397,7 @@ Begin VB.Form FormMainWindow
          Index           =   7
          Left            =   1890
          TabIndex        =   118
-         Top             =   2205
+         Top             =   2310
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -420,7 +420,7 @@ Begin VB.Form FormMainWindow
          Index           =   6
          Left            =   945
          TabIndex        =   116
-         Top             =   2205
+         Top             =   2310
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -443,7 +443,7 @@ Begin VB.Form FormMainWindow
          Index           =   5
          Left            =   4725
          TabIndex        =   114
-         Top             =   1470
+         Top             =   1575
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -466,7 +466,7 @@ Begin VB.Form FormMainWindow
          Index           =   4
          Left            =   3780
          TabIndex        =   112
-         Top             =   1470
+         Top             =   1575
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -489,7 +489,7 @@ Begin VB.Form FormMainWindow
          Index           =   3
          Left            =   2835
          TabIndex        =   110
-         Top             =   1470
+         Top             =   1575
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -512,7 +512,7 @@ Begin VB.Form FormMainWindow
          Index           =   2
          Left            =   1890
          TabIndex        =   108
-         Top             =   1470
+         Top             =   1575
          Width           =   330
       End
       Begin VB.Label LabelNumberCount 
@@ -535,7 +535,7 @@ Begin VB.Form FormMainWindow
          Index           =   1
          Left            =   945
          TabIndex        =   106
-         Top             =   1470
+         Top             =   1575
          Width           =   330
       End
    End
@@ -553,14 +553,15 @@ Begin VB.Form FormMainWindow
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   2010
+      Height          =   2115
       Left            =   7035
       TabIndex        =   125
       Top             =   3990
       Width           =   6210
       Begin VB.HScrollBar HScrollSettingsLargeBlockMaximumFixedAmount 
          Height          =   330
-         Left            =   3675
+         LargeChange     =   7
+         Left            =   4095
          Max             =   8
          Min             =   1
          MouseIcon       =   "FormMainWindow.frx":34FC
@@ -568,12 +569,12 @@ Begin VB.Form FormMainWindow
          TabIndex        =   131
          Top             =   1365
          Value           =   6
-         Width           =   2220
+         Width           =   1800
       End
       Begin VB.HScrollBar HScrollSettingsTotalFixedAmount 
          Height          =   330
-         LargeChange     =   9
-         Left            =   3675
+         LargeChange     =   63
+         Left            =   4095
          Max             =   54
          Min             =   9
          MouseIcon       =   "FormMainWindow.frx":364E
@@ -581,7 +582,7 @@ Begin VB.Form FormMainWindow
          TabIndex        =   128
          Top             =   525
          Value           =   36
-         Width           =   2220
+         Width           =   1800
       End
       Begin VB.Label LabelSettingsLargeBlockMaximumFixedAmountIndicator 
          Alignment       =   1  'Right Justify
@@ -600,10 +601,10 @@ Begin VB.Form FormMainWindow
          EndProperty
          ForeColor       =   &H00000000&
          Height          =   330
-         Left            =   3045
+         Left            =   3570
          TabIndex        =   130
          Top             =   1365
-         Width           =   540
+         Width           =   435
       End
       Begin VB.Label LabelSettingsTotalFixedAmountIndicator 
          Alignment       =   1  'Right Justify
@@ -622,22 +623,22 @@ Begin VB.Form FormMainWindow
          EndProperty
          ForeColor       =   &H00000000&
          Height          =   330
-         Left            =   3045
+         Left            =   3570
          TabIndex        =   127
          Top             =   525
-         Width           =   540
+         Width           =   435
       End
       Begin VB.Label LabelSettingsLargeBlockMaximumFixedAmount 
          Appearance      =   0  'Flat
          BackColor       =   &H000000FF&
          BackStyle       =   0  'Transparent
-         Caption         =   "&Maximum amount of fixed blocks in a large block:"
+         Caption         =   "&Maximum fixed blocks in a large block: (may not work when the value above is too large)"
          ForeColor       =   &H00000000&
-         Height          =   330
+         Height          =   855
          Left            =   315
          TabIndex        =   129
          Top             =   1050
-         Width           =   5055
+         Width           =   3270
       End
       Begin VB.Label LabelSettingsTotalFixedAmount 
          Appearance      =   0  'Flat
@@ -649,7 +650,7 @@ Begin VB.Form FormMainWindow
          Left            =   315
          TabIndex        =   126
          Top             =   525
-         Width           =   2535
+         Width           =   3270
       End
    End
    Begin VB.Timer TimerProgressbarAnimation 
@@ -673,7 +674,7 @@ Begin VB.Form FormMainWindow
       Left            =   12180
       MouseIcon       =   "FormMainWindow.frx":37A0
       MousePointer    =   99  'Custom
-      TabIndex        =   134
+      TabIndex        =   135
       Top             =   210
       Width           =   1065
    End
@@ -687,10 +688,32 @@ Begin VB.Form FormMainWindow
       Left            =   12915
       Top             =   7035
    End
+   Begin VB.Label LabelStartTime 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      BackColor       =   &H000000FF&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Game not started yet"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00000000&
+      Height          =   330
+      Left            =   7770
+      TabIndex        =   133
+      Top             =   210
+      Width           =   3060
+   End
    Begin WMPLibCtl.WindowsMediaPlayer WindowsMediaPlayer1 
       Height          =   435
       Left            =   315
-      TabIndex        =   135
+      TabIndex        =   136
       Top             =   0
       Visible         =   0   'False
       Width           =   435
@@ -1251,10 +1274,10 @@ Begin VB.Form FormMainWindow
       EndProperty
       ForeColor       =   &H00000000&
       Height          =   330
-      Left            =   10815
-      TabIndex        =   133
+      Left            =   10920
+      TabIndex        =   134
       Top             =   210
-      Width           =   1170
+      Width           =   1065
    End
    Begin VB.Line Line 
       BorderColor     =   &H00404040&
@@ -3048,7 +3071,7 @@ Begin VB.Form FormMainWindow
             Enabled         =   0   'False
          End
          Begin VB.Menu MenuAboutDate 
-            Caption         =   "2022/01/28"
+            Caption         =   "2022/07/25"
             Enabled         =   0   'False
          End
       End
@@ -3069,8 +3092,8 @@ Attribute VB_Exposed = False
 '  Random Sudoku Generator
 '
 '  Powered by Sam Toki
-'  Version: v0.23eng
-'  Date:    2022/01/28 (Fri)
+'  Version: v0.24eng
+'  Date:    2022/07/25 (Mon)
 '  History: First version v0.10 was built on 2020/03/28.
 '
 '  WARNING: Commercial use of this computer software is strictly prohibited.
@@ -3272,11 +3295,13 @@ Private Const SW_SHOW = 5
             If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Proximity Connection.wav"
             Call Initialization: gamestatus = 1: Call Refresher
             LabelStatusbar.Caption = "Game started!"
+            LabelStartTime.Caption = "Game started at " & LabelClock.Caption
         Else
             CmdStartReset.SetFocus
             If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Recycle.wav"
             Call Initialization: gamestatus = 0: Call Refresher
             LabelStatusbar.Caption = "Game reset! Now you can adjust settings."
+            LabelStartTime.Caption = "Game not started yet"
         End If
     End Sub
     Public Sub CmdNumber_Click(index As Integer)
@@ -3293,7 +3318,7 @@ Private Const SW_SHOW = 5
         If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Menu Command.wav"
         Call Refresher: gameinputstep = 3: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1
         If (Not (gamestatus = 2)) Then Exit Sub
-        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
     End Sub
 
     Public Sub TextboxInput_Change()
@@ -3308,93 +3333,93 @@ Private Const SW_SHOW = 5
                 Select Case TextboxInput.Text
                     Case 1
                         sudokucurrentrow = 1
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 2
                         sudokucurrentrow = 2
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 3
                         sudokucurrentrow = 3
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 4
                         sudokucurrentrow = 4
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 5
                         sudokucurrentrow = 5
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 6
                         sudokucurrentrow = 6
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 7
                         sudokucurrentrow = 7
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 8
                         sudokucurrentrow = 8
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 9
                         sudokucurrentrow = 9
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 2/3: Now enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                     Case Else
-                        MsgBox "CAUTION: Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                 End Select
             Case 2
                 Select Case TextboxInput.Text
                     Case 1
                         sudokucurrentcolumn = 1
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 2
                         sudokucurrentcolumn = 2
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 3
                         sudokucurrentcolumn = 3
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 4
                         sudokucurrentcolumn = 4
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 5
                         sudokucurrentcolumn = 5
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 6
                         sudokucurrentcolumn = 6
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 7
                         sudokucurrentcolumn = 7
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 8
                         sudokucurrentcolumn = 8
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 9
                         sudokucurrentcolumn = 9
-                        LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 3/3: Now fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                     Case Else
-                        MsgBox "CAUTION: Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                 End Select
             Case 3
                 If (((sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 1) Or (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3)) And (dontannoymeagain1 = False)) Then
-                    answer = MsgBox("CAUTION: You are trying to change the number in a fixed block." & vbCrLf & "Are you sure you want to proceed?" & vbCrLf & vbCrLf & "[Yes]  Sure, just proceed" & vbCrLf & "[No]  Do not proceed, leave that number unchanged" & vbCrLf & "[Cancel]  Just do it, and don't annoy me again", vbQuestion + vbYesNoCancel + vbDefaultButton1, "Random Sudoku Generator")
+                    answer = MsgBox("You are trying to change the number in a fixed block." & vbCrLf & "Are you sure you want to proceed?" & vbCrLf & vbCrLf & "[Yes]  Sure, just proceed" & vbCrLf & "[No]  Do not proceed, leave that number unchanged" & vbCrLf & "[Cancel]  Just do it, and don't annoy me again", vbQuestion + vbYesNoCancel + vbDefaultButton1, "Random Sudoku Generator")
                     If answer = vbNo Then
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
                     End If
@@ -3434,7 +3459,7 @@ Private Const SW_SHOW = 5
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 3: Call SudokuChecker: Call Refresher: Exit Sub
                     Case Else
-                        MsgBox "CAUTION: Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9, and 0 for ""Clear"", Enter for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9, and 0 for ""Clear"", Enter for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 3: Call SudokuChecker: Call Refresher: Exit Sub
                 End Select
         End Select
@@ -3487,7 +3512,7 @@ Private Const SW_SHOW = 5
                 Next
                 sudokutotalgenerated = sudokutotalfixed
                 sudokutotalfilled = tempvariant
-                LabelStatusbar = "Game ongoing... --- Filled: " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Step 1/3: Please enter row number."
+                LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter row number."
 
                 'Judge Sudoku solved...
                 tempvariant = 0
@@ -3845,12 +3870,12 @@ SudokuGenerator_Relocate_:
         preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
         If preventinfiniteloopcounter1 > 100 Then
             'Abort generation...
-            MsgBox "CAUTION: Unable to continue generating this Sudoku grid anymore." & vbCrLf & "Random Sudoku generation has failed." & vbCrLf & "Please try to adjust the settings so as to make it easier to generate.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+            MsgBox "Unable to continue generating this Sudoku grid anymore." & vbCrLf & "Random Sudoku generation has failed." & vbCrLf & "Please reduce the amount of fixed blocks to make it easier to generate.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
             Call CmdStartReset_Click: Exit Sub
         End If
 
         'Locate random block...
-        LabelStatusbar.Caption = "Generating... " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Locating a new block..."
+        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Finding an empty block..."
         lotterytotal = 9: lotterynumber = 0
         Do
             Call RandomNumberGenerator: sudokucurrentrow = lotterynumber
@@ -3875,7 +3900,7 @@ SudokuGenerator_Refill_:
         End If
 
         'Fill and fix random block...
-        LabelStatusbar.Caption = "Generating... " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Filling with random number..."
+        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Filling with a random number..."
         lotterytotal = 9: lotterynumber = 0
         Do
             Call RandomNumberGenerator
@@ -3885,14 +3910,14 @@ SudokuGenerator_Refill_:
         Loop Until sudokufillednumbercount(lotterynumber) <= 9
 
         'Check rules...
-        LabelStatusbar.Caption = "Generating... " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Checking..."
+        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Checking integrity..."
         Call SudokuChecker
         Call Refresher
         If sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3 Then GoTo SudokuGenerator_Refill_
 
-        'OK...
+        'Done...
         preventinfiniteloopcounter1 = 0: preventinfiniteloopcounter2 = 0
-        LabelStatusbar.Caption = "Generating... " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- OK..."
+        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed
     End Sub
 
 '  ---------------------------------------------------------------------------------------------------------------------
