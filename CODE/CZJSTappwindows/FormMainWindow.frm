@@ -5,8 +5,8 @@ Begin VB.Form FormMainWindow
    AutoRedraw      =   -1  'True
    BackColor       =   &H00D0D0D0&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Random Sudoku Generator v0.24eng"
-   ClientHeight    =   7260
+   Caption         =   "Random Sudoku Generator v0.30eng"
+   ClientHeight    =   7575
    ClientLeft      =   45
    ClientTop       =   750
    ClientWidth     =   13455
@@ -26,13 +26,13 @@ Begin VB.Form FormMainWindow
    MaxButton       =   0   'False
    MouseIcon       =   "FormMainWindow.frx":23D2
    MousePointer    =   99  'Custom
-   ScaleHeight     =   7260
+   ScaleHeight     =   7575
    ScaleWidth      =   13455
    StartUpPosition =   2  'ÆÁÄ»ÖÐÐÄ
-   Begin VB.Timer TimerSudokuGenerator 
-      Interval        =   20
-      Left            =   315
-      Top             =   420
+   Begin VB.Timer TimerGenerator 
+      Interval        =   10
+      Left            =   5880
+      Top             =   6405
    End
    Begin VB.Frame FrameControls 
       Appearance      =   0  'Flat
@@ -56,7 +56,7 @@ Begin VB.Form FormMainWindow
       Begin VB.TextBox TextboxInput 
          Alignment       =   2  'Center
          Appearance      =   0  'Flat
-         BackColor       =   &H00709000&
+         BackColor       =   &H0080A000&
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -288,11 +288,11 @@ Begin VB.Form FormMainWindow
          Width           =   540
       End
       Begin VB.CommandButton CmdStartReset 
-         Caption         =   "&START / RESET"
+         Caption         =   "&START"
          Default         =   -1  'True
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   12
+            Size            =   13.5
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -307,26 +307,14 @@ Begin VB.Form FormMainWindow
          Top             =   525
          Width           =   4320
       End
-      Begin VB.Shape ShapeLightGameOngoingIndicator 
-         BackColor       =   &H00C0C0C0&
-         BackStyle       =   1  'Opaque
-         BorderColor     =   &H000000FF&
-         BorderStyle     =   0  'Transparent
-         FillColor       =   &H0000C000&
-         Height          =   330
-         Left            =   5565
-         Shape           =   3  'Circle
-         Top             =   525
-         Width           =   330
-      End
-      Begin VB.Shape ShapeLightGeneratingIndicator 
+      Begin VB.Shape ShapeLightGameStatusIndicator 
          BackColor       =   &H00C0C0C0&
          BackStyle       =   1  'Opaque
          BorderColor     =   &H000000FF&
          BorderStyle     =   0  'Transparent
          FillColor       =   &H000000FF&
          Height          =   330
-         Left            =   5145
+         Left            =   5565
          Shape           =   3  'Circle
          Top             =   525
          Width           =   330
@@ -553,21 +541,45 @@ Begin VB.Form FormMainWindow
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   2115
+      Height          =   2955
       Left            =   7035
       TabIndex        =   125
       Top             =   3990
       Width           =   6210
+      Begin VB.CheckBox CheckboxSlowDownGeneration 
+         BackColor       =   &H00D0D0D0&
+         Caption         =   "Slo&w down generation for observation"
+         ForeColor       =   &H00000000&
+         Height          =   330
+         Left            =   315
+         MouseIcon       =   "FormMainWindow.frx":34FC
+         MousePointer    =   99  'Custom
+         TabIndex        =   132
+         Top             =   1890
+         Width           =   5580
+      End
+      Begin VB.CheckBox CheckboxUseLegacyGenerationMethod 
+         BackColor       =   &H00D0D0D0&
+         Caption         =   "&Use legacy generation method, which may result in an unsolvable Sudoku or even generation failure"
+         ForeColor       =   &H00000000&
+         Height          =   540
+         Left            =   315
+         MouseIcon       =   "FormMainWindow.frx":364E
+         MousePointer    =   99  'Custom
+         TabIndex        =   133
+         Top             =   2310
+         Width           =   5580
+      End
       Begin VB.HScrollBar HScrollSettingsLargeBlockMaximumFixedAmount 
          Height          =   330
          LargeChange     =   7
          Left            =   4095
          Max             =   8
          Min             =   1
-         MouseIcon       =   "FormMainWindow.frx":34FC
+         MouseIcon       =   "FormMainWindow.frx":37A0
          MousePointer    =   99  'Custom
          TabIndex        =   131
-         Top             =   1365
+         Top             =   1155
          Value           =   6
          Width           =   1800
       End
@@ -577,7 +589,7 @@ Begin VB.Form FormMainWindow
          Left            =   4095
          Max             =   54
          Min             =   9
-         MouseIcon       =   "FormMainWindow.frx":364E
+         MouseIcon       =   "FormMainWindow.frx":38F2
          MousePointer    =   99  'Custom
          TabIndex        =   128
          Top             =   525
@@ -603,7 +615,7 @@ Begin VB.Form FormMainWindow
          Height          =   330
          Left            =   3570
          TabIndex        =   130
-         Top             =   1365
+         Top             =   1155
          Width           =   435
       End
       Begin VB.Label LabelSettingsTotalFixedAmountIndicator 
@@ -632,19 +644,19 @@ Begin VB.Form FormMainWindow
          Appearance      =   0  'Flat
          BackColor       =   &H000000FF&
          BackStyle       =   0  'Transparent
-         Caption         =   "&Maximum fixed blocks in a large block: (may not work when the value above is too large)"
+         Caption         =   "Maximum fixed blocks in a &large block: (may not work when the value above is too large)"
          ForeColor       =   &H00000000&
          Height          =   855
          Left            =   315
          TabIndex        =   129
-         Top             =   1050
+         Top             =   945
          Width           =   3270
       End
       Begin VB.Label LabelSettingsTotalFixedAmount 
          Appearance      =   0  'Flat
          BackColor       =   &H000000FF&
          BackStyle       =   0  'Transparent
-         Caption         =   "&Amount of all fixed blocks:"
+         Caption         =   "Amount of all &fixed blocks:"
          ForeColor       =   &H00000000&
          Height          =   330
          Left            =   315
@@ -655,28 +667,8 @@ Begin VB.Form FormMainWindow
    End
    Begin VB.Timer TimerProgressbarAnimation 
       Interval        =   1
-      Left            =   7035
-      Top             =   6720
-   End
-   Begin VB.CommandButton CmdEXIT 
-      Cancel          =   -1  'True
-      Caption         =   "E&XIT"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   12
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   435
-      Left            =   12180
-      MouseIcon       =   "FormMainWindow.frx":37A0
-      MousePointer    =   99  'Custom
-      TabIndex        =   135
-      Top             =   210
-      Width           =   1065
+      Left            =   13230
+      Top             =   7350
    End
    Begin VB.Timer TimerSudokuBlockAnimation 
       Interval        =   20
@@ -685,8 +677,20 @@ Begin VB.Form FormMainWindow
    End
    Begin VB.Timer TimerClock 
       Interval        =   500
-      Left            =   12915
-      Top             =   7035
+      Left            =   12810
+      Top             =   420
+   End
+   Begin VB.Label LabelStatusbar 
+      Appearance      =   0  'Flat
+      BackColor       =   &H00E0E0E0&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Ready"
+      ForeColor       =   &H00000000&
+      Height          =   330
+      Left            =   105
+      TabIndex        =   134
+      Top             =   7245
+      Width           =   13245
    End
    Begin VB.Label LabelStartTime 
       Alignment       =   1  'Right Justify
@@ -705,15 +709,18 @@ Begin VB.Form FormMainWindow
       EndProperty
       ForeColor       =   &H00000000&
       Height          =   330
-      Left            =   7770
-      TabIndex        =   133
+      Left            =   7035
+      MouseIcon       =   "FormMainWindow.frx":3A44
+      MousePointer    =   99  'Custom
+      TabIndex        =   135
+      ToolTipText     =   "Compare this time to the clock to know how long you have spent solving this Sudoku."
       Top             =   210
-      Width           =   3060
+      Width           =   4740
    End
    Begin WMPLibCtl.WindowsMediaPlayer WindowsMediaPlayer1 
       Height          =   435
       Left            =   315
-      TabIndex        =   136
+      TabIndex        =   137
       Top             =   0
       Visible         =   0   'False
       Width           =   435
@@ -744,15 +751,15 @@ Begin VB.Form FormMainWindow
       _cy             =   767
    End
    Begin VB.Shape ShapeProgressbar 
-      BackColor       =   &H00FF9000&
+      BackColor       =   &H00C0C0C0&
       BackStyle       =   1  'Opaque
       BorderColor     =   &H000000FF&
       BorderStyle     =   0  'Transparent
       FillColor       =   &H000000FF&
-      Height          =   120
-      Left            =   7035
-      Top             =   6615
-      Width           =   6000
+      Height          =   330
+      Left            =   0
+      Top             =   7245
+      Width           =   13455
    End
    Begin VB.Label LabelRowIndicator 
       Alignment       =   2  'Center
@@ -1274,8 +1281,11 @@ Begin VB.Form FormMainWindow
       EndProperty
       ForeColor       =   &H00000000&
       Height          =   330
-      Left            =   10920
-      TabIndex        =   134
+      Left            =   12180
+      MouseIcon       =   "FormMainWindow.frx":3B96
+      MousePointer    =   99  'Custom
+      TabIndex        =   136
+      ToolTipText     =   "Clock"
       Top             =   210
       Width           =   1065
    End
@@ -3022,21 +3032,10 @@ Begin VB.Form FormMainWindow
       BorderColor     =   &H000000FF&
       BorderStyle     =   0  'Transparent
       FillColor       =   &H000000FF&
-      Height          =   120
-      Left            =   7035
-      Top             =   6615
-      Width           =   6210
-   End
-   Begin VB.Label LabelStatusbar 
-      Appearance      =   0  'Flat
-      BackColor       =   &H00C0C0C0&
-      Caption         =   "Ready"
-      ForeColor       =   &H00000000&
       Height          =   330
-      Left            =   7035
-      TabIndex        =   132
-      Top             =   6195
-      Width           =   6210
+      Left            =   0
+      Top             =   7245
+      Width           =   13455
    End
    Begin VB.Menu Menu 
       Caption         =   "&Menu"
@@ -3045,11 +3044,19 @@ Begin VB.Form FormMainWindow
          Checked         =   -1  'True
          Shortcut        =   {F2}
       End
+      Begin VB.Menu MenuAnimationSwitch 
+         Caption         =   "A&nimation"
+         Checked         =   -1  'True
+         Shortcut        =   {F3}
+      End
+      Begin VB.Menu Menu1_ 
+         Caption         =   "-"
+      End
       Begin VB.Menu MenuEXIT 
          Caption         =   "E&XIT"
          Shortcut        =   {F4}
       End
-      Begin VB.Menu Menu1_ 
+      Begin VB.Menu Menu2_ 
          Caption         =   "-"
       End
       Begin VB.Menu MenuAbout 
@@ -3092,7 +3099,7 @@ Attribute VB_Exposed = False
 '  Random Sudoku Generator
 '
 '  Powered by Sam Toki
-'  Version: v0.24eng
+'  Version: v0.30eng
 '  Date:    2022/07/25 (Mon)
 '  History: First version v0.10 was built on 2020/03/28.
 '
@@ -3116,10 +3123,12 @@ Attribute VB_Exposed = False
 Option Explicit
 
 'Declare Menu...
-Public soundswitch As Boolean
+Public setsoundswitch As Boolean
+Public setanimationswitch As Boolean
 
 'Declare Game...
 Public gamestatus As Integer  '0-Initial, 1-Generating, 2-Ongoing.
+Public gamegenerationstep As Integer
 Public gameinputstep As Integer  '1-Row, 2-Column, 3-Number.
 
 'Declare Sudoku...
@@ -3128,32 +3137,33 @@ Public sudokublockstatus As Variant  '(1 To 9)(1 To 9)  0-Filling, 1-Fixed, 2-Fi
 
 Public sudokutotalfixed As Integer
 Public sudokutotalfilling As Integer
-Public sudokutotalgenerated As Integer
 Public sudokutotalfilled As Integer
-Public sudokulargeblockmaximumfixed As Integer
-Public sudokulargeblockfixedcount As Variant  '(1 To 3)(1 To 3)
 Public sudokufillednumbercount As Variant  '(1 To 9)
 
 Public sudokucurrentrow As Integer
 Public sudokucurrentcolumn As Integer
+Public sudokupreviousrow As Integer
+Public sudokupreviouscolumn As Integer
 
 'Declare Lottery...
 Public lotterytotal As Integer
 Public lotterynumber As Integer
 
+'Declare Settings...
+Public settotalfixed As Integer
+Public setlargeblockmaximumfixed As Integer
+Public setuselegacygenerationmethod As Boolean
+
+'Declare Dialog...
+Public answer
+Public dontshowagain1 As Boolean
+
 'Declare Animation...
-Public progressbaranimationtarget As Integer  'Range: 0~6210
+Public progressbaranimationtarget As Integer  'Range: 0~13455
 Public labelrowindicatoranimationtarget As Integer  'Range: 364~6270
 Public labelcolumnindicatoranimationtarget As Integer  'Range: 289~6195
 Public sudokucurrentrowanimation As Integer
 Public sudokucurrentcolumnanimation As Integer
-
-'Declare Dialog...
-Public answer
-Public dontannoymeagain1 As Boolean
-
-'Declare Others...
-Public setanimationswitch As Boolean
 
 'Declare Temporary Variants...
 Public forloop1 As Integer
@@ -3175,16 +3185,18 @@ Private Const SW_SHOW = 5
 
 '[] LOAD []
 
-    Sub Form_Load()
-        soundswitch = True
-        dontannoymeagain1 = False
+    Public Sub Form_Load()
+        setsoundswitch = True
         setanimationswitch = True
+        setuselegacygenerationmethod = False
+        dontshowagain1 = False
 
         Call Initialization
     End Sub
-    Sub Initialization()
+    Public Sub Initialization()
         'Initialize Game...
         gamestatus = 0
+        gamegenerationstep = 0
         gameinputstep = 0
 
         'Initialize Sudoku...
@@ -3211,20 +3223,17 @@ Private Const SW_SHOW = 5
                                   Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0) _
                                   )
 
-        sudokutotalfixed = LabelSettingsTotalFixedAmountIndicator.Caption
+        sudokutotalfixed = 0
         sudokutotalfilling = 81 - sudokutotalfixed
-        sudokutotalgenerated = 0
         sudokutotalfilled = 0
-        sudokulargeblockmaximumfixed = LabelSettingsLargeBlockMaximumFixedAmountIndicator.Caption
-        sudokulargeblockfixedcount = Array(Array(0, 0, 0, 0), _
-                                           Array(0, 0, 0, 0), _
-                                           Array(0, 0, 0, 0), _
-                                           Array(0, 0, 0, 0) _
-                                           )
+        settotalfixed = HScrollSettingsTotalFixedAmount.Value
+        setlargeblockmaximumfixed = HScrollSettingsLargeBlockMaximumFixedAmount.Value
         sudokufillednumbercount = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
         sudokucurrentrow = 0
         sudokucurrentcolumn = 0
+        sudokupreviousrow = 0
+        sudokupreviouscolumn = 0
 
         'Initialize Lottery...
         lotterytotal = 0
@@ -3244,20 +3253,29 @@ Private Const SW_SHOW = 5
 
     'CMD Menu...
     Public Sub MenuSoundSwitch_Click()
-        Select Case soundswitch
-            Case True
-                soundswitch = False
-                MenuSoundSwitch.Checked = False
+        Select Case setsoundswitch
             Case False
-                soundswitch = True
+                setsoundswitch = True
                 MenuSoundSwitch.Checked = True
+            Case True
+                setsoundswitch = False
+                MenuSoundSwitch.Checked = False
+        End Select
+    End Sub
+    Public Sub MenuAnimationSwitch_Click()
+        Select Case setanimationswitch
+            Case False
+                setanimationswitch = True
+                TimerSudokuBlockAnimation.Interval = 20
+                MenuAnimationSwitch.Checked = True
+            Case True
+                setanimationswitch = False
+                TimerSudokuBlockAnimation.Interval = 1
+                MenuAnimationSwitch.Checked = False
         End Select
     End Sub
     Public Sub MenuEXIT_Click()
         End
-    End Sub
-    Public Sub CmdEXIT_Click()
-        Call MenuEXIT_Click
     End Sub
     Public Sub MenuAboutDownload_Click()
         Call ShellExecute(Me.hWnd, "open", "https://github.com/SamToki/VB6---Random-Sudoku-Generator/raw/main/RELEASE/Random%20Sudoku%20Generator.exe", "", "", SW_SHOW)
@@ -3274,34 +3292,52 @@ Private Const SW_SHOW = 5
 
     'CMD Settings...
     Public Sub HScrollSettingsTotalFixedAmount_Change()
-        sudokutotalfixed = HScrollSettingsTotalFixedAmount.Value
-        LabelSettingsTotalFixedAmountIndicator.Caption = sudokutotalfixed
+        settotalfixed = HScrollSettingsTotalFixedAmount.Value
+        LabelSettingsTotalFixedAmountIndicator.Caption = settotalfixed
     End Sub
     Public Sub HScrollSettingsTotalFixedAmount_Scroll()
         Call HScrollSettingsTotalFixedAmount_Change
     End Sub
     Public Sub HScrollSettingsLargeBlockMaximumFixedAmount_Change()
-        sudokulargeblockmaximumfixed = HScrollSettingsLargeBlockMaximumFixedAmount.Value
-        LabelSettingsLargeBlockMaximumFixedAmountIndicator.Caption = sudokulargeblockmaximumfixed
-        HScrollSettingsTotalFixedAmount.Max = sudokulargeblockmaximumfixed * 9
+        setlargeblockmaximumfixed = HScrollSettingsLargeBlockMaximumFixedAmount.Value
+        LabelSettingsLargeBlockMaximumFixedAmountIndicator.Caption = setlargeblockmaximumfixed
+        HScrollSettingsTotalFixedAmount.Max = setlargeblockmaximumfixed * 9
     End Sub
     Public Sub HScrollSettingsLargeBlockMaximumFixedAmount_Scroll()
         Call HScrollSettingsLargeBlockMaximumFixedAmount_Change
+    End Sub
+    Public Sub CheckboxSlowDownGeneration_Click()
+        Select Case CheckboxSlowDownGeneration.Value
+            Case 0
+                TimerGenerator.Interval = 10
+            Case 1
+                TimerGenerator.Interval = 500
+        End Select
+    End Sub
+    Public Sub CheckboxUseLegacyGenerationMethod_Click()
+        Select Case CheckboxUseLegacyGenerationMethod.Value
+            Case 0
+                setuselegacygenerationmethod = False
+            Case 1
+                setuselegacygenerationmethod = True
+        End Select
     End Sub
 
     'CMD Controls...
     Public Sub CmdStartReset_Click()
         If gamestatus = 0 Then
-            If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Proximity Connection.wav"
+            If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Proximity Connection.wav"
             Call Initialization: gamestatus = 1: Call Refresher
             LabelStatusbar.Caption = "Game started!"
-            LabelStartTime.Caption = "Game started at " & LabelClock.Caption
+            LabelStartTime.Caption = "Generation started at " & LabelClock.Caption
+            CmdStartReset.Caption = "RE&SET"
         Else
             CmdStartReset.SetFocus
-            If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Recycle.wav"
+            If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Recycle.wav"
             Call Initialization: gamestatus = 0: Call Refresher
             LabelStatusbar.Caption = "Game reset! Now you can adjust settings."
             LabelStartTime.Caption = "Game not started yet"
+            CmdStartReset.Caption = "&START"
         End If
     End Sub
     Public Sub CmdNumber_Click(index As Integer)
@@ -3315,152 +3351,152 @@ Private Const SW_SHOW = 5
             sudokucurrentcolumn = index Mod 9
         End If
 
-        If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Menu Command.wav"
+        If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Menu Command.wav"
         Call Refresher: gameinputstep = 3: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1
-        If (Not (gamestatus = 2)) Then Exit Sub
-        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+        If Not (gamestatus = 2) Then Exit Sub
+        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
     End Sub
 
     Public Sub TextboxInput_Change()
-        If (Not (gamestatus = 2)) Then Exit Sub
+        If Not (gamestatus = 2) Then Exit Sub
         'If the change is to clear the textbox, then do nothing...
         If TextboxInput.Text = "" Then Exit Sub
 
-        If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Startup.wav"
+        If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Startup.wav"
 
         Select Case gameinputstep
             Case 1
                 Select Case TextboxInput.Text
                     Case 1
                         sudokucurrentrow = 1
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 2
                         sudokucurrentrow = 2
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 3
                         sudokucurrentrow = 3
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 4
                         sudokucurrentrow = 4
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 5
                         sudokucurrentrow = 5
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 6
                         sudokucurrentrow = 6
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 7
                         sudokucurrentrow = 7
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 8
                         sudokucurrentrow = 8
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case 9
                         sudokucurrentrow = 9
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                     Case Else
-                        MsgBox "Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                 End Select
             Case 2
                 Select Case TextboxInput.Text
                     Case 1
                         sudokucurrentcolumn = 1
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 2
                         sudokucurrentcolumn = 2
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 3
                         sudokucurrentcolumn = 3
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 4
                         sudokucurrentcolumn = 4
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 5
                         sudokucurrentcolumn = 5
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 6
                         sudokucurrentcolumn = 6
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 7
                         sudokucurrentcolumn = 7
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 8
                         sudokucurrentcolumn = 8
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case 9
                         sudokucurrentcolumn = 9
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block."
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                     Case Else
-                        MsgBox "Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                 End Select
             Case 3
-                If (((sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 1) Or (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3)) And (dontannoymeagain1 = False)) Then
-                    answer = MsgBox("You are trying to change the number in a fixed block." & vbCrLf & "Are you sure you want to proceed?" & vbCrLf & vbCrLf & "[Yes]  Sure, just proceed" & vbCrLf & "[No]  Do not proceed, leave that number unchanged" & vbCrLf & "[Cancel]  Just do it, and don't annoy me again", vbQuestion + vbYesNoCancel + vbDefaultButton1, "Random Sudoku Generator")
+                If (((sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 1) Or (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3)) And (dontshowagain1 = False)) Then
+                    answer = MsgBox("You are trying to change the number in a fixed block." & vbCrLf & vbCrLf & "It is acceptable only when fixing an unsolvable randomly generated Sudoku." & vbCrLf & vbCrLf & "Do you want to continue?" & vbCrLf & "[Yes] Change this number" & vbCrLf & "[No] Leave it unchanged" & vbCrLf & "[Cancel] Change it, and don't show again", vbQuestion + vbYesNoCancel + vbDefaultButton2, "Random Sudoku Generator")
                     If answer = vbNo Then
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     End If
-                    If answer = vbCancel Then dontannoymeagain1 = True
+                    If answer = vbCancel Then dontshowagain1 = True
                 End If
                 Select Case TextboxInput.Text
                     Case 1
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 1
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 2
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 2
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 3
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 3
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 4
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 4
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 5
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 5
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 6
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 6
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 7
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 7
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 8
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 8
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 9
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 9
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case 0
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
-                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case ""
-                        TextboxInput.Text = "": gameinputstep = 3: Call SudokuChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 3: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case Else
-                        MsgBox "Invalid input. You have pressed a wrong key. Please confirm that your fingers are on the right keys." & vbCrLf & vbCrLf & "NOTE: Acceptable keys are from 1 to 9, and 0 for ""Clear"", Enter for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
-                        TextboxInput.Text = "": gameinputstep = 3: Call SudokuChecker: Call Refresher: Exit Sub
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from 1 to 9, and 0 for ""Clear"", Enter for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        TextboxInput.Text = "": gameinputstep = 3: Call SudokuRuleChecker: Call Refresher: Exit Sub
                 End Select
         End Select
     End Sub
@@ -3471,16 +3507,15 @@ Private Const SW_SHOW = 5
         LabelClock.Caption = Format((Hour(Time)), "00") & ":" & Format((Minute(Time)), "00") & ":" & Format((Second(Time)), "00")
     End Sub
 
-    Public Sub TimerSudokuGenerator_Timer()
+    Public Sub TimerGenerator_Timer()
         If Not (gamestatus = 1) Then Exit Sub
 
-        Call SudokuGenerator
-
-        'Finish generation...
-        If sudokutotalgenerated = sudokutotalfixed Then
-            If soundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Print Complete.wav"
-            gamestatus = 2: gameinputstep = 1: sudokucurrentrow = 0: sudokucurrentcolumn = 0: Call Refresher: TextboxInput.SetFocus
-        End If
+        Select Case setuselegacygenerationmethod
+            Case False
+                Call SudokuGenerator
+            Case True
+                Call SudokuGeneratorLegacy
+        End Select
     End Sub
 
 '  ---------------------------------------------------------------------------------------------------------------------
@@ -3492,7 +3527,8 @@ Private Const SW_SHOW = 5
         'Statistics...
         Select Case gamestatus
             Case 0
-                sudokutotalgenerated = 0
+                sudokutotalfixed = 0
+                sudokutotalfilling = 81 - sudokutotalfixed
                 sudokutotalfilled = 0
             Case 1
                 tempvariant = 0
@@ -3501,18 +3537,26 @@ Private Const SW_SHOW = 5
                         If (((sudokublockstatus(forloop1)(forloop2) = 1) Or (sudokublockstatus(forloop1)(forloop2) = 3)) And (Not (sudokublockdata(forloop1)(forloop2) = 0))) Then tempvariant = tempvariant + 1
                     Next
                 Next
-                sudokutotalgenerated = tempvariant
-                sudokutotalfilled = 0
-            Case 2
+                sudokutotalfixed = tempvariant
+                sudokutotalfilling = 81 - sudokutotalfixed
                 tempvariant = 0
                 For forloop1 = 1 To 9
                     For forloop2 = 1 To 9
-                        If ((Not ((sudokublockstatus(forloop1)(forloop2) = 1) Or (sudokublockstatus(forloop1)(forloop2) = 3))) And (Not (sudokublockdata(forloop1)(forloop2) = 0))) Then tempvariant = tempvariant + 1
+                        If (Not ((sudokublockstatus(forloop1)(forloop2) = 1) Or (sudokublockstatus(forloop1)(forloop2) = 3))) And (Not (sudokublockdata(forloop1)(forloop2) = 0)) Then tempvariant = tempvariant + 1
                     Next
                 Next
-                sudokutotalgenerated = sudokutotalfixed
                 sudokutotalfilled = tempvariant
-                LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter row number."
+            Case 2
+                sudokutotalfixed = settotalfixed
+                sudokutotalfilling = 81 - sudokutotalfixed
+                tempvariant = 0
+                For forloop1 = 1 To 9
+                    For forloop2 = 1 To 9
+                        If (Not ((sudokublockstatus(forloop1)(forloop2) = 1) Or (sudokublockstatus(forloop1)(forloop2) = 3))) And (Not (sudokublockdata(forloop1)(forloop2) = 0)) Then tempvariant = tempvariant + 1
+                    Next
+                Next
+                sudokutotalfilled = tempvariant
+                LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter row number"
 
                 'Judge Sudoku solved...
                 tempvariant = 0
@@ -3531,9 +3575,9 @@ Private Const SW_SHOW = 5
 
         'Row and column number...
         For forloop1 = 0 To 9: LabelRow(forloop1).ForeColor = &HFFFFFF: Next
-        If (Not (sudokucurrentrow = 0)) Then LabelRow(sudokucurrentrow).ForeColor = &H0&
+        If Not (sudokucurrentrow = 0) Then LabelRow(sudokucurrentrow).ForeColor = &H0&
         For forloop1 = 0 To 9: LabelColumn(forloop1).ForeColor = &HFFFFFF: Next
-        If (Not (sudokucurrentcolumn = 0)) Then LabelColumn(sudokucurrentcolumn).ForeColor = &H0&
+        If Not (sudokucurrentcolumn = 0) Then LabelColumn(sudokucurrentcolumn).ForeColor = &H0&
 
         'Sudoku blocks...
         For forloop1 = 1 To 81
@@ -3554,6 +3598,7 @@ Private Const SW_SHOW = 5
             End Select
             LabelSudokuBlock(forloop1).BorderStyle = 0
         Next
+        If Not (sudokucurrentrow = 0 And sudokucurrentcolumn = 0) Then LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HFFE0C0
 
         For forloop1 = 1 To 81
             If (forloop1 Mod 9 = 0) Then
@@ -3582,7 +3627,7 @@ Private Const SW_SHOW = 5
             End If
             If tempvariant >= 9 Then
                 If tempvariant = 9 Then
-                    LabelNumberCount(forloop1).ForeColor = &HD000&
+                    LabelNumberCount(forloop1).ForeColor = &HC000&
                 Else
                     LabelNumberCount(forloop1).ForeColor = &HFF&
                 End If
@@ -3594,27 +3639,33 @@ Private Const SW_SHOW = 5
         'Game status light bulb indicator...
         Select Case gamestatus
             Case 0
-                ShapeLightGeneratingIndicator.FillStyle = 1
-                ShapeLightGameOngoingIndicator.FillStyle = 1
+                ShapeLightGameStatusIndicator.BackColor = &HC0C0C0
             Case 1
-                ShapeLightGeneratingIndicator.FillStyle = 0
-                ShapeLightGameOngoingIndicator.FillStyle = 1
+                ShapeLightGameStatusIndicator.BackColor = &HFFA000
             Case 2
-                ShapeLightGeneratingIndicator.FillStyle = 1
-                ShapeLightGameOngoingIndicator.FillStyle = 0
+                ShapeLightGameStatusIndicator.BackColor = &HE000&
         End Select
 
         'Progressbar...
         Select Case gamestatus
             Case 0
-                ShapeProgressbar.BackColor = &HFF9000
+                ShapeProgressbar.BackColor = &HC0C0C0
                 progressbaranimationtarget = 0
             Case 1
-                ShapeProgressbar.BackColor = &HFF9000
-                progressbaranimationtarget = (sudokutotalgenerated / sudokutotalfixed) * 6210
+                ShapeProgressbar.BackColor = &HFFA000
+                If setuselegacygenerationmethod = False Then
+                    Select Case gamegenerationstep
+                        Case 0 To 4
+                            progressbaranimationtarget = (sudokutotalfilled / sudokutotalfilling) * 13455
+                        Case 5 To 9
+                            progressbaranimationtarget = (sudokutotalfixed / settotalfixed) * 13455
+                    End Select
+                Else
+                    progressbaranimationtarget = (sudokutotalfixed / settotalfixed) * 13455
+                End If
             Case 2
-                ShapeProgressbar.BackColor = &HD000&
-                progressbaranimationtarget = (sudokutotalfilled / sudokutotalfilling) * 6210
+                ShapeProgressbar.BackColor = &HE000&
+                progressbaranimationtarget = (sudokutotalfilled / sudokutotalfilling) * 13455
         End Select
 
         'Commands...
@@ -3625,14 +3676,14 @@ Private Const SW_SHOW = 5
         End If
 
         If gamestatus = 0 Then
-            HScrollSettingsTotalFixedAmount.Enabled = True: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = True
+            HScrollSettingsTotalFixedAmount.Enabled = True: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = True: CheckboxUseLegacyGenerationMethod.Enabled = True
         Else
-            HScrollSettingsTotalFixedAmount.Enabled = False: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = False
+            HScrollSettingsTotalFixedAmount.Enabled = False: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = False: CheckboxUseLegacyGenerationMethod.Enabled = False
         End If
     End Sub
 
     'Check Sudoku...
-    Public Sub LargeBlockChecker()
+    Public Sub LargeBlockMaximumFixedChecker()
         tempvariant = 0
 
         Select Case sudokucurrentrow
@@ -3644,7 +3695,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                     Case 4 To 6
@@ -3653,7 +3704,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                     Case 7 To 9
@@ -3662,7 +3713,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                 End Select
@@ -3674,7 +3725,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                     Case 4 To 6
@@ -3683,7 +3734,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                     Case 7 To 9
@@ -3692,7 +3743,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                 End Select
@@ -3704,7 +3755,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                     Case 4 To 6
@@ -3713,7 +3764,7 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                     Case 7 To 9
@@ -3722,14 +3773,14 @@ Private Const SW_SHOW = 5
                                 If sudokublockstatus(forloop1)(forloop2) = 1 Then tempvariant = tempvariant + 1
                             Next
                         Next
-                        If tempvariant >= sudokulargeblockmaximumfixed Then
+                        If tempvariant >= setlargeblockmaximumfixed Then
                             tempvariant = 444: Exit Sub
                         End If
                 End Select
         End Select
     End Sub
 
-    Public Sub SudokuChecker()
+    Public Sub SudokuRuleChecker()
         'Initialize sudokublockstatus...
         For forloop1 = 1 To 9
             For forloop2 = 1 To 9
@@ -3848,7 +3899,7 @@ Private Const SW_SHOW = 5
     'Generate Sudoku...
     Public Sub RandomNumberGenerator()
         If lotterytotal = 0 Then
-            MsgBox "ERROR: Calling function ""RandomNumberGenerator"" when variant ""lotterytotal"" is 0." & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+            MsgBox "ERROR: Calling function ""RandomNumberGenerator"" when variant ""lotterytotal"" is 0." & vbCrLf & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End If
 
         lotterynumber = 0
@@ -3861,63 +3912,274 @@ Private Const SW_SHOW = 5
     Public Sub SudokuGenerator()
         If Not (gamestatus = 1) Then Exit Sub
 
-        'Prevent infinite loop...
-        preventinfiniteloopcounter1 = 0
+        Select Case gamegenerationstep
+            Case 0
+                Call Refresher
+                gamegenerationstep = 1
+                LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Initialized"
 
-SudokuGenerator_Relocate_:
+                'Prevent infinite loop...
+                preventinfiniteloopcounter1 = 0
+            Case 1
+                'Toleration of infinite loop...
+                preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
+                If preventinfiniteloopcounter1 > 50 Then
+                    'Clear previous row...
+                    answer = MsgBox("The generation has stuck." & vbCrLf & vbCrLf & "The generator will clear the previous row and try again. If this keeps popping up, please click [Yes] to abort the generation." & vbCrLf & vbCrLf & "Do you want to abort the generation?", vbQuestion + vbYesNo + vbDefaultButton2, "Random Sudoku Generator")
+                    If answer = vbYes Then
+                        gamegenerationstep = 444
+                        LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Generation aborted"
+                        Exit Sub
+                    Else
+                        'Move back...
+                        sudokucurrentrow = sudokucurrentrow - 1
+                        sudokucurrentcolumn = 0
+                        'Partly clear...
+                        For forloop1 = sudokucurrentrow To 9
+                            For forloop2 = 1 To 9
+                                sudokublockdata(forloop1)(forloop2) = 0
+                                sudokublockstatus(forloop1)(forloop2) = 0
+                            Next
+                        Next
+                        gamegenerationstep = 0
+                        LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Cleared previous row"
+                        Exit Sub
+                    End If
+                End If
 
-        'Maximum toleration of infinite loop...
-        preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
-        If preventinfiniteloopcounter1 > 100 Then
-            'Abort generation...
-            MsgBox "Unable to continue generating this Sudoku grid anymore." & vbCrLf & "Random Sudoku generation has failed." & vbCrLf & "Please reduce the amount of fixed blocks to make it easier to generate.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
-            Call CmdStartReset_Click: Exit Sub
-        End If
+                'Locate next block...
+                If sudokucurrentrow = 0 Then sudokucurrentrow = 1
+                sudokucurrentcolumn = sudokucurrentcolumn + 1
+                If sudokucurrentcolumn > 9 Then
+                    sudokucurrentrow = sudokucurrentrow + 1
+                    sudokucurrentcolumn = 0
+                    gamegenerationstep = 0
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Located next row"
+                    Exit Sub
+                End If
+                Call Refresher
+                gamegenerationstep = 2
+                LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Located next block"
 
-        'Locate random block...
-        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Finding an empty block..."
-        lotterytotal = 9: lotterynumber = 0
-        Do
-            Call RandomNumberGenerator: sudokucurrentrow = lotterynumber
-            Call RandomNumberGenerator: sudokucurrentcolumn = lotterynumber
-        Loop Until sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                'Prevent infinite loop...
+                preventinfiniteloopcounter2 = 0
+            Case 2
+                'Toleration of infinite loop...
+                preventinfiniteloopcounter2 = preventinfiniteloopcounter2 + 1
+                If preventinfiniteloopcounter2 > 20 Then
+                    'Move back...
+                    sudokucurrentcolumn = 0
+                    'Partly clear...
+                    For forloop1 = sudokucurrentrow To 9
+                        For forloop2 = 1 To 9
+                            sudokublockdata(forloop1)(forloop2) = 0
+                            sudokublockstatus(forloop1)(forloop2) = 0
+                        Next
+                    Next
+                    gamegenerationstep = 1
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Cleared current row"
+                    Exit Sub
+                End If
 
-        'Check rules...
-        Call LargeBlockChecker
-        If tempvariant = 444 Then GoTo SudokuGenerator_Relocate_
+                'Fill but do not fix the block...
+                lotterytotal = 9: lotterynumber = 0
+                Do
+                    Call RandomNumberGenerator
+                    sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = lotterynumber
+                    sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                    Call Refresher
+                Loop Until sudokufillednumbercount(lotterynumber) <= 9
+                gamegenerationstep = 3
+                LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Filled with a random number"
+            Case 3
+                'Check integrity...
+                Call SudokuRuleChecker
+                Call Refresher
+                If (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 2 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3) Then
+                    gamegenerationstep = 2
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Filled with a random number; Number invalid"
+                Else
+                    gamegenerationstep = 4
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Filled with a random number; Number valid"
+                End If
+            Case 4
+                'Done...
+                Call Refresher
+                sudokupreviousrow = sudokucurrentrow: sudokupreviouscolumn = sudokucurrentcolumn
+                gamegenerationstep = 1
+                LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Done"
 
-        'Prevent infinite loop...
-        preventinfiniteloopcounter2 = 0
+                'Finish generation...
+                If sudokutotalfilled = sudokutotalfilling Then
+                    gamegenerationstep = 5
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Generation completed"
+                End If
+            Case 5
+                'Locate random block...
+                lotterytotal = 9: lotterynumber = 0
+                Do
+                    Call RandomNumberGenerator: sudokucurrentrow = lotterynumber
+                    Call RandomNumberGenerator: sudokucurrentcolumn = lotterynumber
+                Loop Until sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                Call Refresher
+                gamegenerationstep = 6
+                LabelStatusbar.Caption = "Fixing " & sudokutotalfixed & "/" & settotalfixed & " --- Found an unfixed block"
+            Case 6
+                'Check integrity...
+                Call Refresher
+                Call LargeBlockMaximumFixedChecker
+                If tempvariant = 444 Then
+                    gamegenerationstep = 5
+                    LabelStatusbar.Caption = "Fixing " & sudokutotalfixed & "/" & settotalfixed & " --- Found an unfixed block; Location invalid"
+                Else
+                    gamegenerationstep = 7
+                    LabelStatusbar.Caption = "Fixing " & sudokutotalfixed & "/" & settotalfixed & " --- Found an unfixed block; Location valid"
+                End If
+            Case 7
+                'Fix the block...
+                sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 1
+                Call Refresher
+                gamegenerationstep = 5
+                LabelStatusbar.Caption = "Fixing " & sudokutotalfixed & "/" & settotalfixed & " --- Found an unfixed block; Fixed"
 
-SudokuGenerator_Refill_:
+                'Finish fix...
+                If sudokutotalfixed = settotalfixed Then
+                    gamegenerationstep = 8
+                    LabelStatusbar.Caption = "Fixing " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Fix completed"
+                End If
+            Case 8
+                'Clear unfixed blocks...
+                For forloop1 = 1 To 9
+                    For forloop2 = 1 To 9
+                        If sudokublockstatus(forloop1)(forloop2) = 0 Then sudokublockdata(forloop1)(forloop2) = 0
+                    Next
+                Next
+                Call Refresher
+                gamegenerationstep = 9
+                LabelStatusbar.Caption = "Cleared unfixed blocks"
+            Case 9
+                'Finish all...
+                If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Print Complete.wav"
+                LabelStartTime.Caption = "Game started at " & LabelClock.Caption
+                gamestatus = 2: gamegenerationstep = 0: gameinputstep = 1: sudokucurrentrow = 0: sudokucurrentcolumn = 0: Call Refresher: TextboxInput.SetFocus
+            Case 444
+                'Abort generation...
+                MsgBox "Unable to continue generating this Sudoku.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                Call CmdStartReset_Click
+        End Select
+    End Sub
 
-        'Maximum toleration of infinite loop...
-        preventinfiniteloopcounter2 = preventinfiniteloopcounter2 + 1
-        If preventinfiniteloopcounter2 > 10 Then
-            sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
-            sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 0
-            GoTo SudokuGenerator_Relocate_
-        End If
+    Public Sub SudokuGeneratorLegacy()
+        If Not (gamestatus = 1) Then Exit Sub
 
-        'Fill and fix random block...
-        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Filling with a random number..."
-        lotterytotal = 9: lotterynumber = 0
-        Do
-            Call RandomNumberGenerator
-            sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = lotterynumber
-            sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 1
-            Call Refresher
-        Loop Until sudokufillednumbercount(lotterynumber) <= 9
+        Select Case gamegenerationstep
+            Case 0
+                Call Refresher
+                gamegenerationstep = 1
+                LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Initialized"
 
-        'Check rules...
-        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed & " --- Checking integrity..."
-        Call SudokuChecker
-        Call Refresher
-        If sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3 Then GoTo SudokuGenerator_Refill_
+                'Prevent infinite loop...
+                preventinfiniteloopcounter1 = 0
+            Case 1
+                'Toleration of infinite loop...
+                preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
+                If preventinfiniteloopcounter1 > 50 Then
+                    If sudokupreviousrow = 0 And sudokupreviouscolumn = 0 Then
+                        gamegenerationstep = 444
+                        LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Generation aborted"
+                        Exit Sub
+                    Else
+                        'Clear previous block...
+                        answer = MsgBox("The generation has stuck." & vbCrLf & vbCrLf & "The generator will clear the previous block and try again. If still stuck, the generation will be aborted. If this keeps popping up, please click [Yes] to abort manually." & vbCrLf & vbCrLf & "Do you want to abort the generation?", vbQuestion + vbYesNo + vbDefaultButton2, "Random Sudoku Generator")
+                        If answer = vbYes Then
+                            gamegenerationstep = 444
+                            LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Generation aborted"
+                            Exit Sub
+                        Else
+                            sudokucurrentrow = sudokupreviousrow: sudokucurrentcolumn = sudokupreviouscolumn
+                            sudokupreviousrow = 0: sudokupreviouscolumn = 0
+                            sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                            sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                            gamegenerationstep = 0
+                            LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Cleared previous block"
+                            Exit Sub
+                        End If
+                    End If
+                End If
 
-        'Done...
-        preventinfiniteloopcounter1 = 0: preventinfiniteloopcounter2 = 0
-        LabelStatusbar.Caption = "Generating " & sudokutotalgenerated & "/" & sudokutotalfixed
+                'Locate random block...
+                lotterytotal = 9: lotterynumber = 0
+                Do
+                    Call RandomNumberGenerator: sudokucurrentrow = lotterynumber
+                    Call RandomNumberGenerator: sudokucurrentcolumn = lotterynumber
+                Loop Until sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                Call Refresher
+                gamegenerationstep = 2
+                LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Found an empty block"
+            Case 2
+                'Check integrity...
+                Call Refresher
+                Call LargeBlockMaximumFixedChecker
+                If tempvariant = 444 Then
+                    gamegenerationstep = 1
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Found an empty block; Location invalid"
+                Else
+                    gamegenerationstep = 3
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Found an empty block; Location valid"
+                End If
+
+                'Prevent infinite loop...
+                preventinfiniteloopcounter2 = 0
+            Case 3
+                'Toleration of infinite loop...
+                preventinfiniteloopcounter2 = preventinfiniteloopcounter2 + 1
+                If preventinfiniteloopcounter2 > 20 Then
+                    sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                    sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                    gamegenerationstep = 1
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Cleared current block"
+                    Exit Sub
+                End If
+
+                'Fill and fix the block...
+                lotterytotal = 9: lotterynumber = 0
+                Do
+                    Call RandomNumberGenerator
+                    sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = lotterynumber
+                    sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 1
+                    Call Refresher
+                Loop Until sudokufillednumbercount(lotterynumber) <= 9
+                gamegenerationstep = 4
+                LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Filled with a random number"
+            Case 4
+                'Check integrity...
+                Call SudokuRuleChecker
+                Call Refresher
+                If (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 2 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3) Then
+                    gamegenerationstep = 3
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Filled with a random number; Number invalid"
+                Else
+                    gamegenerationstep = 5
+                    LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Filled with a random number; Number valid"
+                End If
+            Case 5
+                'Done...
+                Call Refresher
+                sudokupreviousrow = sudokucurrentrow: sudokupreviouscolumn = sudokucurrentcolumn
+                gamegenerationstep = 0
+                LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Done"
+
+                'Finish generation...
+                If sudokutotalfixed = settotalfixed Then
+                    If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Print Complete.wav"
+                    LabelStartTime.Caption = "Game started at " & LabelClock.Caption
+                    gamestatus = 2: gamegenerationstep = 0: gameinputstep = 1: sudokucurrentrow = 0: sudokucurrentcolumn = 0: Call Refresher: TextboxInput.SetFocus
+                End If
+            Case 444
+                'Abort generation...
+                MsgBox "Unable to continue generating this Sudoku." & vbCrLf & vbCrLf & "Please reduce the amount of fixed blocks to make it easier to generate, or uncheck ""Use legacy generation method"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                Call CmdStartReset_Click
+        End Select
     End Sub
 
 '  ---------------------------------------------------------------------------------------------------------------------
@@ -3928,48 +4190,50 @@ SudokuGenerator_Refill_:
         labelrowindicatoranimationtarget = 364 + (sudokucurrentrow / 9) * (6270 - 364)
         labelcolumnindicatoranimationtarget = 289 + (sudokucurrentcolumn / 9) * (6195 - 289)
 
-        If ShapeProgressbar.Width = progressbaranimationtarget Then GoTo TimerProgressbarAnimation_Skip1_
-        If ShapeProgressbar.Width > progressbaranimationtarget Then ShapeProgressbar.Width = ShapeProgressbar.Width - Abs(ShapeProgressbar.Width - progressbaranimationtarget) / 4
-        If ShapeProgressbar.Width < progressbaranimationtarget Then ShapeProgressbar.Width = ShapeProgressbar.Width + Abs(ShapeProgressbar.Width - progressbaranimationtarget) / 4
-        If Abs(ShapeProgressbar.Width - progressbaranimationtarget) < 10 Then ShapeProgressbar.Width = progressbaranimationtarget
+        Select Case setanimationswitch
+            Case False
+                ShapeProgressbar.Width = progressbaranimationtarget
+                LabelRowIndicator.Top = labelrowindicatoranimationtarget
+                LabelColumnIndicator.Left = labelcolumnindicatoranimationtarget
+            Case True
+                If ShapeProgressbar.Width = progressbaranimationtarget Then GoTo TimerProgressbarAnimation_Skip1_
+                If ShapeProgressbar.Width > progressbaranimationtarget Then ShapeProgressbar.Width = ShapeProgressbar.Width - Abs(ShapeProgressbar.Width - progressbaranimationtarget) / 4
+                If ShapeProgressbar.Width < progressbaranimationtarget Then ShapeProgressbar.Width = ShapeProgressbar.Width + Abs(ShapeProgressbar.Width - progressbaranimationtarget) / 4
+                If Abs(ShapeProgressbar.Width - progressbaranimationtarget) < 10 Then ShapeProgressbar.Width = progressbaranimationtarget
 TimerProgressbarAnimation_Skip1_:
-
-        If LabelRowIndicator.Top = labelrowindicatoranimationtarget Then GoTo TimerProgressbarAnimation_Skip2_
-        If LabelRowIndicator.Top > labelrowindicatoranimationtarget Then LabelRowIndicator.Top = LabelRowIndicator.Top - Abs(LabelRowIndicator.Top - labelrowindicatoranimationtarget) / 4
-        If LabelRowIndicator.Top < labelrowindicatoranimationtarget Then LabelRowIndicator.Top = LabelRowIndicator.Top + Abs(LabelRowIndicator.Top - labelrowindicatoranimationtarget) / 4
-        If Abs(LabelRowIndicator.Top - labelrowindicatoranimationtarget) < 10 Then LabelRowIndicator.Top = labelrowindicatoranimationtarget
+                If LabelRowIndicator.Top = labelrowindicatoranimationtarget Then GoTo TimerProgressbarAnimation_Skip2_
+                If LabelRowIndicator.Top > labelrowindicatoranimationtarget Then LabelRowIndicator.Top = LabelRowIndicator.Top - Abs(LabelRowIndicator.Top - labelrowindicatoranimationtarget) / 4
+                If LabelRowIndicator.Top < labelrowindicatoranimationtarget Then LabelRowIndicator.Top = LabelRowIndicator.Top + Abs(LabelRowIndicator.Top - labelrowindicatoranimationtarget) / 4
+                If Abs(LabelRowIndicator.Top - labelrowindicatoranimationtarget) < 10 Then LabelRowIndicator.Top = labelrowindicatoranimationtarget
 TimerProgressbarAnimation_Skip2_:
-
-        If LabelColumnIndicator.Left = labelcolumnindicatoranimationtarget Then GoTo TimerProgressbarAnimation_Skip3_
-        If LabelColumnIndicator.Left > labelcolumnindicatoranimationtarget Then LabelColumnIndicator.Left = LabelColumnIndicator.Left - Abs(LabelColumnIndicator.Left - labelcolumnindicatoranimationtarget) / 4
-        If LabelColumnIndicator.Left < labelcolumnindicatoranimationtarget Then LabelColumnIndicator.Left = LabelColumnIndicator.Left + Abs(LabelColumnIndicator.Left - labelcolumnindicatoranimationtarget) / 4
-        If Abs(LabelColumnIndicator.Left - labelcolumnindicatoranimationtarget) < 10 Then LabelColumnIndicator.Left = labelcolumnindicatoranimationtarget
+                If LabelColumnIndicator.Left = labelcolumnindicatoranimationtarget Then GoTo TimerProgressbarAnimation_Skip3_
+                If LabelColumnIndicator.Left > labelcolumnindicatoranimationtarget Then LabelColumnIndicator.Left = LabelColumnIndicator.Left - Abs(LabelColumnIndicator.Left - labelcolumnindicatoranimationtarget) / 4
+                If LabelColumnIndicator.Left < labelcolumnindicatoranimationtarget Then LabelColumnIndicator.Left = LabelColumnIndicator.Left + Abs(LabelColumnIndicator.Left - labelcolumnindicatoranimationtarget) / 4
+                If Abs(LabelColumnIndicator.Left - labelcolumnindicatoranimationtarget) < 10 Then LabelColumnIndicator.Left = labelcolumnindicatoranimationtarget
 TimerProgressbarAnimation_Skip3_:
-
+        End Select
     End Sub
 
     Public Sub TimerSudokuBlockAnimation_Timer()
-        'DISABLED LINE: If Not (gamestatus = 2) Then Exit Sub
-
-        'Highlight current row and column with light blue color, animated. And highlight the row and column number...
+        'Highlight current row and column with light yellow color, animated. And highlight the row and column number...
         Select Case gameinputstep
             Case 0
                 Exit Sub
             Case 1
                 Exit Sub
             Case 2
-                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HFFF0D0
+                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HC0FFFF
                 If sudokucurrentrowanimation < 9 Then sudokucurrentrowanimation = sudokucurrentrowanimation + 1
                 LabelRow(sudokucurrentrow).ForeColor = &H0&
             Case 3
-                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HFFF0D0
+                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HC0FFFF
                 If sudokucurrentrowanimation < 9 Then sudokucurrentrowanimation = sudokucurrentrowanimation + 1
                 LabelRow(sudokucurrentrow).ForeColor = &H0&
-                LabelSudokuBlock(sudokucurrentcolumnanimation * 9 - 9 + sudokucurrentcolumn).BackColor = &HFFF0D0
+                LabelSudokuBlock(sudokucurrentcolumnanimation * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFFF
                 If sudokucurrentcolumnanimation < 9 Then sudokucurrentcolumnanimation = sudokucurrentcolumnanimation + 1
                 LabelColumn(sudokucurrentcolumn).ForeColor = &H0&
             Case Else
-                MsgBox "ERROR: Game input step is out of range." & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                MsgBox "ERROR: Game input step is out of range." & vbCrLf & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
 
         'Highlight current block with light green or red color...
@@ -3980,15 +4244,15 @@ TimerProgressbarAnimation_Skip3_:
             'Change backcolor...
             Select Case sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn)
                 Case 0
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0FFD0
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFC0
                 Case 1
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0D0FF
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0C0FF
                 Case 2
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0FFD0
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFC0
                 Case 3
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HD0D0FF
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0C0FF
                 Case Else
-                    MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                    MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
             End Select
         End If
     End Sub
