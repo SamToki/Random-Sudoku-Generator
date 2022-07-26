@@ -593,7 +593,7 @@ Begin VB.Form FormMainWindow
          MousePointer    =   99  'Custom
          TabIndex        =   128
          Top             =   525
-         Value           =   36
+         Value           =   45
          Width           =   1800
       End
       Begin VB.Label LabelSettingsLargeBlockMaximumFixedAmountIndicator 
@@ -623,7 +623,7 @@ Begin VB.Form FormMainWindow
          Appearance      =   0  'Flat
          BackColor       =   &H000000FF&
          BackStyle       =   0  'Transparent
-         Caption         =   "36"
+         Caption         =   "45"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   12
@@ -636,7 +636,10 @@ Begin VB.Form FormMainWindow
          ForeColor       =   &H00000000&
          Height          =   330
          Left            =   3570
+         MouseIcon       =   "FormMainWindow.frx":3A44
+         MousePointer    =   99  'Custom
          TabIndex        =   127
+         ToolTipText     =   $"FormMainWindow.frx":3B96
          Top             =   525
          Width           =   435
       End
@@ -710,7 +713,7 @@ Begin VB.Form FormMainWindow
       ForeColor       =   &H00000000&
       Height          =   330
       Left            =   7035
-      MouseIcon       =   "FormMainWindow.frx":3A44
+      MouseIcon       =   "FormMainWindow.frx":3C1D
       MousePointer    =   99  'Custom
       TabIndex        =   135
       ToolTipText     =   "Compare this time to the clock to know how long you have spent solving this Sudoku."
@@ -1282,7 +1285,7 @@ Begin VB.Form FormMainWindow
       ForeColor       =   &H00000000&
       Height          =   330
       Left            =   12180
-      MouseIcon       =   "FormMainWindow.frx":3B96
+      MouseIcon       =   "FormMainWindow.frx":3D6F
       MousePointer    =   99  'Custom
       TabIndex        =   136
       ToolTipText     =   "Clock"
@@ -3294,6 +3297,7 @@ Private Const SW_SHOW = 5
     Public Sub HScrollSettingsTotalFixedAmount_Change()
         settotalfixed = HScrollSettingsTotalFixedAmount.Value
         LabelSettingsTotalFixedAmountIndicator.Caption = settotalfixed
+        If settotalfixed > 39 And settotalfixed < 60 Then LabelSettingsTotalFixedAmountIndicator.ForeColor = &H0& Else LabelSettingsTotalFixedAmountIndicator.ForeColor = &HFF&
     End Sub
     Public Sub HScrollSettingsTotalFixedAmount_Scroll()
         Call HScrollSettingsTotalFixedAmount_Change
