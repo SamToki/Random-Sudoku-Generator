@@ -5,7 +5,7 @@ Begin VB.Form FormMainWindow
    AutoRedraw      =   -1  'True
    BackColor       =   &H00D0D0D0&
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Random Sudoku Generator v0.30eng"
+   Caption         =   "Random Sudoku Generator v0.31eng"
    ClientHeight    =   7575
    ClientLeft      =   45
    ClientTop       =   750
@@ -572,10 +572,10 @@ Begin VB.Form FormMainWindow
       End
       Begin VB.HScrollBar HScrollSettingsLargeBlockMaximumFixedAmount 
          Height          =   330
-         LargeChange     =   7
+         LargeChange     =   6
          Left            =   4095
          Max             =   8
-         Min             =   1
+         Min             =   2
          MouseIcon       =   "FormMainWindow.frx":37A0
          MousePointer    =   99  'Custom
          TabIndex        =   131
@@ -585,10 +585,10 @@ Begin VB.Form FormMainWindow
       End
       Begin VB.HScrollBar HScrollSettingsTotalFixedAmount 
          Height          =   330
-         LargeChange     =   63
+         LargeChange     =   55
          Left            =   4095
          Max             =   54
-         Min             =   9
+         Min             =   17
          MouseIcon       =   "FormMainWindow.frx":38F2
          MousePointer    =   99  'Custom
          TabIndex        =   128
@@ -3078,7 +3078,7 @@ Begin VB.Form FormMainWindow
             Enabled         =   0   'False
          End
          Begin VB.Menu MenuAboutDate 
-            Caption         =   "2022/07/25"
+            Caption         =   "2022/07/26"
             Enabled         =   0   'False
          End
       End
@@ -3352,9 +3352,7 @@ Private Const SW_SHOW = 5
         End If
 
         If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Menu Command.wav"
-        Call Refresher: gameinputstep = 3: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1
-        If Not (gamestatus = 2) Then Exit Sub
-        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+        gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1
     End Sub
 
     Public Sub TextboxInput_Change()
@@ -3367,93 +3365,143 @@ Private Const SW_SHOW = 5
         Select Case gameinputstep
             Case 1
                 Select Case TextboxInput.Text
-                    Case 1
+                    Case "1"
                         sudokucurrentrow = 1
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 2
+                    Case "2"
                         sudokucurrentrow = 2
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 3
+                    Case "3"
                         sudokucurrentrow = 3
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 4
+                    Case "4"
                         sudokucurrentrow = 4
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 5
+                    Case "5"
                         sudokucurrentrow = 5
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 6
+                    Case "6"
                         sudokucurrentrow = 6
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 7
+                    Case "7"
                         sudokucurrentrow = 7
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 8
+                    Case "8"
                         sudokucurrentrow = 8
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
-                    Case 9
+                    Case "9"
                         sudokucurrentrow = 9
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
+                    Case "W", "w"
+                        If sudokucurrentrow > 1 Then sudokucurrentrow = sudokucurrentrow - 1 Else sudokucurrentrow = 1
+                        If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "S", "s"
+                        If sudokucurrentrow < 9 Then sudokucurrentrow = sudokucurrentrow + 1 Else sudokucurrentrow = 9
+                        If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "A", "a"
+                        If sudokucurrentcolumn > 1 Then sudokucurrentcolumn = sudokucurrentcolumn - 1 Else sudokucurrentcolumn = 1
+                        If sudokucurrentrow = 0 Then sudokucurrentrow = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "D", "d"
+                        If sudokucurrentcolumn < 9 Then sudokucurrentcolumn = sudokucurrentcolumn + 1 Else sudokucurrentcolumn = 9
+                        If sudokucurrentrow = 0 Then sudokucurrentrow = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                     Case Else
-                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""WASD"" for selection change.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                 End Select
             Case 2
                 Select Case TextboxInput.Text
-                    Case 1
+                    Case "1"
                         sudokucurrentcolumn = 1
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 2
+                    Case "2"
                         sudokucurrentcolumn = 2
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 3
+                    Case "3"
                         sudokucurrentcolumn = 3
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 4
+                    Case "4"
                         sudokucurrentcolumn = 4
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 5
+                    Case "5"
                         sudokucurrentcolumn = 5
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 6
+                    Case "6"
                         sudokucurrentcolumn = 6
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 7
+                    Case "7"
                         sudokucurrentcolumn = 7
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 8
+                    Case "8"
                         sudokucurrentcolumn = 8
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
-                    Case 9
+                    Case "9"
                         sudokucurrentcolumn = 9
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "W", "w"
+                        If sudokucurrentrow > 1 Then sudokucurrentrow = sudokucurrentrow - 1 Else sudokucurrentrow = 1
+                        If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "S", "s"
+                        If sudokucurrentrow < 9 Then sudokucurrentrow = sudokucurrentrow + 1 Else sudokucurrentrow = 9
+                        If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "A", "a"
+                        If sudokucurrentcolumn > 1 Then sudokucurrentcolumn = sudokucurrentcolumn - 1 Else sudokucurrentcolumn = 1
+                        If sudokucurrentrow = 0 Then sudokucurrentrow = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "D", "d"
+                        If sudokucurrentcolumn < 9 Then sudokucurrentcolumn = sudokucurrentcolumn + 1 Else sudokucurrentcolumn = 9
+                        If sudokucurrentrow = 0 Then sudokucurrentrow = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                     Case Else
-                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from 1 to 9.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""WASD"" for selection change.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                 End Select
             Case 3
+                Select Case TextboxInput.Text
+                    Case "W", "w"
+                        If sudokucurrentrow > 1 Then sudokucurrentrow = sudokucurrentrow - 1 Else sudokucurrentrow = 1
+                        If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "S", "s"
+                        If sudokucurrentrow < 9 Then sudokucurrentrow = sudokucurrentrow + 1 Else sudokucurrentrow = 9
+                        If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "A", "a"
+                        If sudokucurrentcolumn > 1 Then sudokucurrentcolumn = sudokucurrentcolumn - 1 Else sudokucurrentcolumn = 1
+                        If sudokucurrentrow = 0 Then sudokucurrentrow = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                    Case "D", "d"
+                        If sudokucurrentcolumn < 9 Then sudokucurrentcolumn = sudokucurrentcolumn + 1 Else sudokucurrentcolumn = 9
+                        If sudokucurrentrow = 0 Then sudokucurrentrow = 1
+                        TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
+                End Select
                 If (((sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 1) Or (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3)) And (dontshowagain1 = False)) Then
                     answer = MsgBox("You are trying to change the number in a fixed block." & vbCrLf & vbCrLf & "It is acceptable only when fixing an unsolvable randomly generated Sudoku." & vbCrLf & vbCrLf & "Do you want to continue?" & vbCrLf & "[Yes] Change this number" & vbCrLf & "[No] Leave it unchanged" & vbCrLf & "[Cancel] Change it, and don't show again", vbQuestion + vbYesNoCancel + vbDefaultButton2, "Random Sudoku Generator")
                     If answer = vbNo Then
@@ -3462,40 +3510,40 @@ Private Const SW_SHOW = 5
                     If answer = vbCancel Then dontshowagain1 = True
                 End If
                 Select Case TextboxInput.Text
-                    Case 1
+                    Case "1"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 1
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 2
+                    Case "2"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 2
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 3
+                    Case "3"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 3
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 4
+                    Case "4"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 4
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 5
+                    Case "5"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 5
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 6
+                    Case "6"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 6
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 7
+                    Case "7"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 7
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 8
+                    Case "8"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 8
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 9
+                    Case "9"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 9
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
-                    Case 0
+                    Case "0"
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 3: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case Else
-                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from 1 to 9, and 0 for ""Clear"", Enter for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""0"" for ""Clear"", ""WASD"" for selection change, ""Enter"" for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 3: Call SudokuRuleChecker: Call Refresher: Exit Sub
                 End Select
         End Select
@@ -3530,6 +3578,7 @@ Private Const SW_SHOW = 5
                 sudokutotalfixed = 0
                 sudokutotalfilling = 81 - sudokutotalfixed
                 sudokutotalfilled = 0
+                LabelStatusbar.Caption = "Ready"
             Case 1
                 tempvariant = 0
                 For forloop1 = 1 To 9
@@ -3556,7 +3605,18 @@ Private Const SW_SHOW = 5
                     Next
                 Next
                 sudokutotalfilled = tempvariant
-                LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter row number"
+                Select Case gameinputstep
+                    Case 0
+                        Exit Sub
+                    Case 1
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter row number. Enter ""WASD"" for selection change"
+                    Case 2
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                    Case 3
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                    Case Else
+                        MsgBox "ERROR: Game input step is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                End Select
 
                 'Judge Sudoku solved...
                 tempvariant = 0
@@ -3595,10 +3655,15 @@ Private Const SW_SHOW = 5
                     LabelSudokuBlock(forloop1).BackColor = &HFFFFFF: LabelSudokuBlock(forloop1).ForeColor = &HFF&
                 Case 3
                     LabelSudokuBlock(forloop1).BackColor = &HC0C0C0: LabelSudokuBlock(forloop1).ForeColor = &HFF&
+                Case Else
+                    MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
             End Select
             LabelSudokuBlock(forloop1).BorderStyle = 0
         Next
-        If Not (sudokucurrentrow = 0 And sudokucurrentcolumn = 0) Then LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HFFE0C0
+        If Not (sudokucurrentrow = 0 And sudokucurrentcolumn = 0) Then
+            LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BorderStyle = 1
+            LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HFFE0C0
+        End If
 
         For forloop1 = 1 To 81
             If (forloop1 Mod 9 = 0) Then
@@ -3644,6 +3709,8 @@ Private Const SW_SHOW = 5
                 ShapeLightGameStatusIndicator.BackColor = &HFFA000
             Case 2
                 ShapeLightGameStatusIndicator.BackColor = &HE000&
+            Case Else
+                MsgBox "ERROR: Game status is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
 
         'Progressbar...
@@ -3659,6 +3726,8 @@ Private Const SW_SHOW = 5
                             progressbaranimationtarget = (sudokutotalfilled / sudokutotalfilling) * 13455
                         Case 5 To 9
                             progressbaranimationtarget = (sudokutotalfixed / settotalfixed) * 13455
+                        Case Else
+                            MsgBox "ERROR: Game generation step is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                     End Select
                 Else
                     progressbaranimationtarget = (sudokutotalfixed / settotalfixed) * 13455
@@ -3666,6 +3735,8 @@ Private Const SW_SHOW = 5
             Case 2
                 ShapeProgressbar.BackColor = &HE000&
                 progressbaranimationtarget = (sudokutotalfilled / sudokutotalfilling) * 13455
+            Case Else
+                MsgBox "ERROR: Game status is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
 
         'Commands...
@@ -3899,7 +3970,7 @@ Private Const SW_SHOW = 5
     'Generate Sudoku...
     Public Sub RandomNumberGenerator()
         If lotterytotal = 0 Then
-            MsgBox "ERROR: Calling function ""RandomNumberGenerator"" when variant ""lotterytotal"" is 0." & vbCrLf & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+            MsgBox "ERROR: Calling function ""RandomNumberGenerator"" when variant ""lotterytotal"" is 0." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End If
 
         lotterynumber = 0
@@ -3922,8 +3993,7 @@ Private Const SW_SHOW = 5
                 preventinfiniteloopcounter1 = 0
             Case 1
                 'Toleration of infinite loop...
-                preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
-                If preventinfiniteloopcounter1 > 50 Then
+                If preventinfiniteloopcounter1 > 20 Then
                     'Clear previous row...
                     answer = MsgBox("The generation has stuck." & vbCrLf & vbCrLf & "The generator will clear the previous row and try again. If this keeps popping up, please click [Yes] to abort the generation." & vbCrLf & vbCrLf & "Do you want to abort the generation?", vbQuestion + vbYesNo + vbDefaultButton2, "Random Sudoku Generator")
                     If answer = vbYes Then
@@ -3965,8 +4035,7 @@ Private Const SW_SHOW = 5
                 preventinfiniteloopcounter2 = 0
             Case 2
                 'Toleration of infinite loop...
-                preventinfiniteloopcounter2 = preventinfiniteloopcounter2 + 1
-                If preventinfiniteloopcounter2 > 20 Then
+                If preventinfiniteloopcounter2 > 30 Then
                     'Move back...
                     sudokucurrentcolumn = 0
                     'Partly clear...
@@ -3976,6 +4045,7 @@ Private Const SW_SHOW = 5
                             sudokublockstatus(forloop1)(forloop2) = 0
                         Next
                     Next
+                    preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
                     gamegenerationstep = 1
                     LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Cleared current row"
                     Exit Sub
@@ -3995,7 +4065,8 @@ Private Const SW_SHOW = 5
                 'Check integrity...
                 Call SudokuRuleChecker
                 Call Refresher
-                If (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 2 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3) Then
+                If sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 2 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3 Then
+                    preventinfiniteloopcounter2 = preventinfiniteloopcounter2 + 1
                     gamegenerationstep = 2
                     LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Filled with a random number; Number invalid"
                 Else
@@ -4066,6 +4137,8 @@ Private Const SW_SHOW = 5
                 'Abort generation...
                 MsgBox "Unable to continue generating this Sudoku.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                 Call CmdStartReset_Click
+            Case Else
+                MsgBox "ERROR: Game generation step is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
     End Sub
 
@@ -4082,8 +4155,7 @@ Private Const SW_SHOW = 5
                 preventinfiniteloopcounter1 = 0
             Case 1
                 'Toleration of infinite loop...
-                preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
-                If preventinfiniteloopcounter1 > 50 Then
+                If preventinfiniteloopcounter1 > 20 Then
                     If sudokupreviousrow = 0 And sudokupreviouscolumn = 0 Then
                         gamegenerationstep = 444
                         LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Generation aborted"
@@ -4132,10 +4204,10 @@ Private Const SW_SHOW = 5
                 preventinfiniteloopcounter2 = 0
             Case 3
                 'Toleration of infinite loop...
-                preventinfiniteloopcounter2 = preventinfiniteloopcounter2 + 1
-                If preventinfiniteloopcounter2 > 20 Then
+                If preventinfiniteloopcounter2 > 30 Then
                     sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
                     sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 0
+                    preventinfiniteloopcounter1 = preventinfiniteloopcounter1 + 1
                     gamegenerationstep = 1
                     LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Cleared current block"
                     Exit Sub
@@ -4155,7 +4227,8 @@ Private Const SW_SHOW = 5
                 'Check integrity...
                 Call SudokuRuleChecker
                 Call Refresher
-                If (sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 2 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3) Then
+                If sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 2 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn) = 3 Then
+                    preventinfiniteloopcounter2 = preventinfiniteloopcounter2 + 1
                     gamegenerationstep = 3
                     LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Filled with a random number; Number invalid"
                 Else
@@ -4179,6 +4252,8 @@ Private Const SW_SHOW = 5
                 'Abort generation...
                 MsgBox "Unable to continue generating this Sudoku." & vbCrLf & vbCrLf & "Please reduce the amount of fixed blocks to make it easier to generate, or uncheck ""Use legacy generation method"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                 Call CmdStartReset_Click
+            Case Else
+                MsgBox "ERROR: Game generation step is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
     End Sub
 
@@ -4222,18 +4297,31 @@ TimerProgressbarAnimation_Skip3_:
             Case 1
                 Exit Sub
             Case 2
-                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HC0FFFF
+                If sudokublockstatus(sudokucurrentrow)(sudokucurrentrowanimation) = 0 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentrowanimation) = 2 Then
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HC0FFFF
+                Else
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &H80C0C0
+                End If
                 If sudokucurrentrowanimation < 9 Then sudokucurrentrowanimation = sudokucurrentrowanimation + 1
                 LabelRow(sudokucurrentrow).ForeColor = &H0&
             Case 3
-                LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HC0FFFF
+                If sudokublockstatus(sudokucurrentrow)(sudokucurrentrowanimation) = 0 Or sudokublockstatus(sudokucurrentrow)(sudokucurrentrowanimation) = 2 Then
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &HC0FFFF
+                Else
+                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentrowanimation).BackColor = &H80C0C0
+                End If
                 If sudokucurrentrowanimation < 9 Then sudokucurrentrowanimation = sudokucurrentrowanimation + 1
                 LabelRow(sudokucurrentrow).ForeColor = &H0&
-                LabelSudokuBlock(sudokucurrentcolumnanimation * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFFF
+
+                If sudokublockstatus(sudokucurrentcolumnanimation)(sudokucurrentcolumn) = 0 Or sudokublockstatus(sudokucurrentcolumnanimation)(sudokucurrentcolumn) = 2 Then
+                    LabelSudokuBlock(sudokucurrentcolumnanimation * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFFF
+                Else
+                    LabelSudokuBlock(sudokucurrentcolumnanimation * 9 - 9 + sudokucurrentcolumn).BackColor = &H80C0C0
+                End If
                 If sudokucurrentcolumnanimation < 9 Then sudokucurrentcolumnanimation = sudokucurrentcolumnanimation + 1
                 LabelColumn(sudokucurrentcolumn).ForeColor = &H0&
             Case Else
-                MsgBox "ERROR: Game input step is out of range." & vbCrLf & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                MsgBox "ERROR: Game input step is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
         End Select
 
         'Highlight current block with light green or red color...
@@ -4243,16 +4331,12 @@ TimerProgressbarAnimation_Skip3_:
 
             'Change backcolor...
             Select Case sudokublockstatus(sudokucurrentrow)(sudokucurrentcolumn)
-                Case 0
+                Case 0, 2
                     LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFC0
-                Case 1
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0C0FF
-                Case 2
-                    LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0FFC0
-                Case 3
+                Case 1, 3
                     LabelSudokuBlock(sudokucurrentrow * 9 - 9 + sudokucurrentcolumn).BackColor = &HC0C0FF
                 Case Else
-                    MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & vbCrLf & "You can send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                    MsgBox "ERROR: Sudoku block fixed-or-not data is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
             End Select
         End If
     End Sub
