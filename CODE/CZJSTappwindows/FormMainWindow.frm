@@ -3344,6 +3344,11 @@ Private Const SW_SHOW = 5
         TextboxInput.Text = index
     End Sub
     Public Sub LabelSudokuBlock_Click(index As Integer)
+        If gamestatus = 1 Then
+            MsgBox "Sudoku generation in progress. You cannot select the blocks during generation.", vbInformation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+            Exit Sub
+        End If
+
         sudokucurrentrow = -Int(-index / 9)
         If (index Mod 9 = 0) Then
             sudokucurrentcolumn = 9
@@ -3357,6 +3362,7 @@ Private Const SW_SHOW = 5
 
     Public Sub TextboxInput_Change()
         If Not (gamestatus = 2) Then Exit Sub
+        TextboxInput.SetFocus
         'If the change is to clear the textbox, then do nothing...
         If TextboxInput.Text = "" Then Exit Sub
 
@@ -3740,17 +3746,22 @@ Private Const SW_SHOW = 5
         End Select
 
         'Commands...
-        If Not (gamestatus = 2) Then
-            TextboxInput.Enabled = False: For forloop1 = 0 To 9: CmdNumber(forloop1).Enabled = False: Next
-        Else
-            TextboxInput.Enabled = True: For forloop1 = 0 To 9: CmdNumber(forloop1).Enabled = True: Next
-        End If
-
-        If gamestatus = 0 Then
-            HScrollSettingsTotalFixedAmount.Enabled = True: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = True: CheckboxUseLegacyGenerationMethod.Enabled = True
-        Else
-            HScrollSettingsTotalFixedAmount.Enabled = False: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = False: CheckboxUseLegacyGenerationMethod.Enabled = False
-        End If
+        Select Case gamestatus
+            Case 0
+                HScrollSettingsTotalFixedAmount.Enabled = True: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = True: CheckboxUseLegacyGenerationMethod.Enabled = True
+                TextboxInput.Enabled = False
+                For forloop1 = 0 To 9: CmdNumber(forloop1).Enabled = False: Next
+            Case 1
+                HScrollSettingsTotalFixedAmount.Enabled = False: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = False: CheckboxUseLegacyGenerationMethod.Enabled = False
+                TextboxInput.Enabled = False
+                For forloop1 = 0 To 9: CmdNumber(forloop1).Enabled = False: Next
+            Case 2
+                HScrollSettingsTotalFixedAmount.Enabled = False: HScrollSettingsLargeBlockMaximumFixedAmount.Enabled = False: CheckboxUseLegacyGenerationMethod.Enabled = False
+                TextboxInput.Enabled = True: TextboxInput.SetFocus
+                For forloop1 = 0 To 9: CmdNumber(forloop1).Enabled = True: Next
+            Case Else
+                MsgBox "ERROR: Game status is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+        End Select
     End Sub
 
     'Check Sudoku...
@@ -4132,7 +4143,7 @@ Private Const SW_SHOW = 5
                 'Finish all...
                 If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Print Complete.wav"
                 LabelStartTime.Caption = "Game started at " & LabelClock.Caption
-                gamestatus = 2: gamegenerationstep = 0: gameinputstep = 1: sudokucurrentrow = 0: sudokucurrentcolumn = 0: Call Refresher: TextboxInput.SetFocus
+                gamestatus = 2: gamegenerationstep = 0: gameinputstep = 1: sudokucurrentrow = 0: sudokucurrentcolumn = 0: Call Refresher
             Case 444
                 'Abort generation...
                 MsgBox "Unable to continue generating this Sudoku.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
@@ -4246,7 +4257,7 @@ Private Const SW_SHOW = 5
                 If sudokutotalfixed = settotalfixed Then
                     If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Print Complete.wav"
                     LabelStartTime.Caption = "Game started at " & LabelClock.Caption
-                    gamestatus = 2: gamegenerationstep = 0: gameinputstep = 1: sudokucurrentrow = 0: sudokucurrentcolumn = 0: Call Refresher: TextboxInput.SetFocus
+                    gamestatus = 2: gamegenerationstep = 0: gameinputstep = 1: sudokucurrentrow = 0: sudokucurrentcolumn = 0: Call Refresher
                 End If
             Case 444
                 'Abort generation...
