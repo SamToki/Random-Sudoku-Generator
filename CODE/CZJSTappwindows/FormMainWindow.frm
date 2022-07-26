@@ -3339,7 +3339,7 @@ Private Const SW_SHOW = 5
             CmdStartReset.SetFocus
             If setsoundswitch = True Then WindowsMediaPlayer1.URL = "C:\Windows\Media\Windows Recycle.wav"
             Call Initialization: gamestatus = 0: Call Refresher
-            LabelStatusbar.Caption = "Game reset! Now you can adjust settings."
+            LabelStatusbar.Caption = "Game reset! Now you can adjust settings"
             LabelStartTime.Caption = "Game not started yet"
             CmdStartReset.Caption = "&START"
         End If
@@ -3412,19 +3412,23 @@ Private Const SW_SHOW = 5
                         LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "W", "w"
-                        If sudokucurrentrow > 1 Then sudokucurrentrow = sudokucurrentrow - 1 Else sudokucurrentrow = 1
+                        If sudokucurrentrow > 0 Then sudokucurrentrow = sudokucurrentrow - 1
+                        If sudokucurrentrow < 1 Then sudokucurrentrow = 9
                         If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "S", "s"
-                        If sudokucurrentrow < 9 Then sudokucurrentrow = sudokucurrentrow + 1 Else sudokucurrentrow = 9
+                        If sudokucurrentrow < 10 Then sudokucurrentrow = sudokucurrentrow + 1
+                        If sudokucurrentrow > 9 Then sudokucurrentrow = 1
                         If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "A", "a"
-                        If sudokucurrentcolumn > 1 Then sudokucurrentcolumn = sudokucurrentcolumn - 1 Else sudokucurrentcolumn = 1
+                        If sudokucurrentcolumn > 0 Then sudokucurrentcolumn = sudokucurrentcolumn - 1
+                        If sudokucurrentcolumn < 1 Then sudokucurrentcolumn = 9
                         If sudokucurrentrow = 0 Then sudokucurrentrow = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "D", "d"
-                        If sudokucurrentcolumn < 9 Then sudokucurrentcolumn = sudokucurrentcolumn + 1 Else sudokucurrentcolumn = 9
+                        If sudokucurrentcolumn < 10 Then sudokucurrentcolumn = sudokucurrentcolumn + 1
+                        If sudokucurrentcolumn > 9 Then sudokucurrentcolumn = 1
                         If sudokucurrentrow = 0 Then sudokucurrentrow = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case ""
@@ -3472,19 +3476,23 @@ Private Const SW_SHOW = 5
                         LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "W", "w"
-                        If sudokucurrentrow > 1 Then sudokucurrentrow = sudokucurrentrow - 1 Else sudokucurrentrow = 1
+                        If sudokucurrentrow > 0 Then sudokucurrentrow = sudokucurrentrow - 1
+                        If sudokucurrentrow < 1 Then sudokucurrentrow = 9
                         If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "S", "s"
-                        If sudokucurrentrow < 9 Then sudokucurrentrow = sudokucurrentrow + 1 Else sudokucurrentrow = 9
+                        If sudokucurrentrow < 10 Then sudokucurrentrow = sudokucurrentrow + 1
+                        If sudokucurrentrow > 9 Then sudokucurrentrow = 1
                         If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "A", "a"
-                        If sudokucurrentcolumn > 1 Then sudokucurrentcolumn = sudokucurrentcolumn - 1 Else sudokucurrentcolumn = 1
+                        If sudokucurrentcolumn > 0 Then sudokucurrentcolumn = sudokucurrentcolumn - 1
+                        If sudokucurrentcolumn < 1 Then sudokucurrentcolumn = 9
                         If sudokucurrentrow = 0 Then sudokucurrentrow = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "D", "d"
-                        If sudokucurrentcolumn < 9 Then sudokucurrentcolumn = sudokucurrentcolumn + 1 Else sudokucurrentcolumn = 9
+                        If sudokucurrentcolumn < 10 Then sudokucurrentcolumn = sudokucurrentcolumn + 1
+                        If sudokucurrentcolumn > 9 Then sudokucurrentcolumn = 1
                         If sudokucurrentrow = 0 Then sudokucurrentrow = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case ""
@@ -3496,19 +3504,23 @@ Private Const SW_SHOW = 5
             Case 3
                 Select Case TextboxInput.Text
                     Case "W", "w"
-                        If sudokucurrentrow > 1 Then sudokucurrentrow = sudokucurrentrow - 1 Else sudokucurrentrow = 1
+                        If sudokucurrentrow > 0 Then sudokucurrentrow = sudokucurrentrow - 1
+                        If sudokucurrentrow < 1 Then sudokucurrentrow = 9
                         If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "S", "s"
-                        If sudokucurrentrow < 9 Then sudokucurrentrow = sudokucurrentrow + 1 Else sudokucurrentrow = 9
+                        If sudokucurrentrow < 10 Then sudokucurrentrow = sudokucurrentrow + 1
+                        If sudokucurrentrow > 9 Then sudokucurrentrow = 1
                         If sudokucurrentcolumn = 0 Then sudokucurrentcolumn = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "A", "a"
-                        If sudokucurrentcolumn > 1 Then sudokucurrentcolumn = sudokucurrentcolumn - 1 Else sudokucurrentcolumn = 1
+                        If sudokucurrentcolumn > 0 Then sudokucurrentcolumn = sudokucurrentcolumn - 1
+                        If sudokucurrentcolumn < 1 Then sudokucurrentcolumn = 9
                         If sudokucurrentrow = 0 Then sudokucurrentrow = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "D", "d"
-                        If sudokucurrentcolumn < 9 Then sudokucurrentcolumn = sudokucurrentcolumn + 1 Else sudokucurrentcolumn = 9
+                        If sudokucurrentcolumn < 10 Then sudokucurrentcolumn = sudokucurrentcolumn + 1
+                        If sudokucurrentcolumn > 9 Then sudokucurrentcolumn = 1
                         If sudokucurrentrow = 0 Then sudokucurrentrow = 1
                         TextboxInput.Text = "": gameinputstep = 3: Call Refresher: sudokucurrentrowanimation = 1: sudokucurrentcolumnanimation = 1: Exit Sub
                 End Select
