@@ -3563,10 +3563,10 @@ Private Const SW_SHOW = 5
                         sudokublockdata(sudokucurrentrow)(sudokucurrentcolumn) = 0
                         TextboxInput.Text = "": gameinputstep = 1: Call SudokuRuleChecker: Call Refresher: Exit Sub
                     Case ""
-                        TextboxInput.Text = "": gameinputstep = 3: Call SudokuRuleChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 3: Exit Sub
                     Case Else
                         MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""0"" for ""Clear"", ""WASD"" for selection change, ""Enter"" for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
-                        TextboxInput.Text = "": gameinputstep = 3: Call SudokuRuleChecker: Call Refresher: Exit Sub
+                        TextboxInput.Text = "": gameinputstep = 3: Exit Sub
                 End Select
         End Select
     End Sub
