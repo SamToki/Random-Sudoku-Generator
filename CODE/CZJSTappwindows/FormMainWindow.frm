@@ -3102,8 +3102,8 @@ Attribute VB_Exposed = False
 '  Random Sudoku Generator
 '
 '  Powered by Sam Toki
-'  Version: v0.30eng
-'  Date:    2022/07/25 (Mon)
+'  Version: v0.31eng
+'  Date:    2022/07/26 (Tue)
 '  History: First version v0.10 was built on 2020/03/28.
 '
 '  WARNING: Commercial use of this computer software is strictly prohibited.
@@ -4022,7 +4022,7 @@ Private Const SW_SHOW = 5
                 'Toleration of infinite loop...
                 If preventinfiniteloopcounter1 > 20 Then
                     'Clear previous row...
-                    answer = MsgBox("The generation has stuck." & vbCrLf & vbCrLf & "The generator will clear the previous row and try again. If this keeps popping up, please click [Yes] to abort the generation." & vbCrLf & vbCrLf & "Do you want to abort the generation?", vbQuestion + vbYesNo + vbDefaultButton2, "Random Sudoku Generator")
+                    answer = MsgBox("The generation has stuck." & vbCrLf & vbCrLf & "The generator will clear the previous row and try again. If this keeps popping up, please select ""Yes"" to abort the generation." & vbCrLf & vbCrLf & "Do you want to abort the generation?", vbQuestion + vbYesNo + vbDefaultButton2, "Random Sudoku Generator")
                     If answer = vbYes Then
                         gamegenerationstep = 444
                         LabelStatusbar.Caption = "Generating " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Generation aborted"
@@ -4189,7 +4189,7 @@ Private Const SW_SHOW = 5
                         Exit Sub
                     Else
                         'Clear previous block...
-                        answer = MsgBox("The generation has stuck." & vbCrLf & vbCrLf & "The generator will clear the previous block and try again. If still stuck, the generation will be aborted. If this keeps popping up, please click [Yes] to abort manually." & vbCrLf & vbCrLf & "Do you want to abort the generation?", vbQuestion + vbYesNo + vbDefaultButton2, "Random Sudoku Generator")
+                        answer = MsgBox("The generation has stuck." & vbCrLf & vbCrLf & "The generator will clear the previous block and try again. If still stuck, the generation will be aborted. If this keeps popping up, please select ""Yes"" to abort manually." & vbCrLf & vbCrLf & "Do you want to abort the generation?", vbQuestion + vbYesNo + vbDefaultButton2, "Random Sudoku Generator")
                         If answer = vbYes Then
                             gamegenerationstep = 444
                             LabelStatusbar.Caption = "Generating " & sudokutotalfixed & "/" & settotalfixed & " --- Generation aborted"
