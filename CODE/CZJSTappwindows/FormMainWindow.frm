@@ -3081,7 +3081,7 @@ Begin VB.Form FormMainWindow
             Enabled         =   0   'False
          End
          Begin VB.Menu MenuAboutDate 
-            Caption         =   "2022/07/26"
+            Caption         =   "2022/08/08"
             Enabled         =   0   'False
          End
       End
@@ -3434,7 +3434,7 @@ Private Const SW_SHOW = 5
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                     Case Else
-                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""WASD"" for selection change.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""WASD"" for selection change, ""Enter"" for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 1: Exit Sub
                 End Select
             Case 2
@@ -3498,7 +3498,7 @@ Private Const SW_SHOW = 5
                     Case ""
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                     Case Else
-                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""WASD"" for selection change.", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                        MsgBox "Invalid input." & vbCrLf & vbCrLf & "You have pressed a wrong key. Please ensure that your fingers are on the right keys. Acceptable keys are from ""1"" to ""9"", and ""WASD"" for selection change, ""Enter"" for ""Reset Game"".", vbExclamation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                         TextboxInput.Text = "": gameinputstep = 2: Exit Sub
                 End Select
             Case 3
@@ -3631,11 +3631,11 @@ Private Const SW_SHOW = 5
                     Case 0
                         Exit Sub
                     Case 1
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter row number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter row number. Press ""WASD"" for selection change"
                     Case 2
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                     Case 3
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                     Case Else
                         MsgBox "ERROR: Game input step is out of range." & vbCrLf & vbCrLf & "Please send a feedback to @SamToki via GitHub so as to help solve the problem.", vbCritical + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
                 End Select
@@ -3652,7 +3652,10 @@ Private Const SW_SHOW = 5
                         If sudokublockdata(forloop1)(forloop2) = 0 Then tempvariant = 888
                     Next
                 Next
-                If ((sudokutotalfilled >= sudokutotalfilling) And (tempvariant = 0) And (gameinputstep = 1)) Then MsgBox "Congrats! You have solved the Sudoku.", vbInformation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                If ((sudokutotalfilled >= sudokutotalfilling) And (tempvariant = 0) And (gameinputstep = 1)) Then
+                    MsgBox "Congrats! You have solved the Sudoku.", vbInformation + vbOKOnly + vbDefaultButton1, "Random Sudoku Generator"
+                    LabelStatusbar.Caption = "Sudoku solved. Press ""Enter"" to reset the game"
+                End If
         End Select
 
         'Row and column number...
