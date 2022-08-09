@@ -3081,7 +3081,7 @@ Begin VB.Form FormMainWindow
             Enabled         =   0   'False
          End
          Begin VB.Menu MenuAboutDate 
-            Caption         =   "2022/08/08"
+            Caption         =   "2022/08/10"
             Enabled         =   0   'False
          End
       End
@@ -3103,7 +3103,7 @@ Attribute VB_Exposed = False
 '
 '  Powered by Sam Toki
 '  Version: v0.31eng
-'  Date:    2022/07/26 (Tue)
+'  Date:    2022/08/10 (Wed)
 '  History: First version v0.10 was built on 2020/03/28.
 '
 '  WARNING: Commercial use of this computer software is strictly prohibited.
@@ -3377,39 +3377,39 @@ Private Const SW_SHOW = 5
                 Select Case TextboxInput.Text
                     Case "1"
                         sudokucurrentrow = 1
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "2"
                         sudokucurrentrow = 2
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "3"
                         sudokucurrentrow = 3
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "4"
                         sudokucurrentrow = 4
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "5"
                         sudokucurrentrow = 5
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "6"
                         sudokucurrentrow = 6
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "7"
                         sudokucurrentrow = 7
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "8"
                         sudokucurrentrow = 8
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "9"
                         sudokucurrentrow = 9
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Enter ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please enter column number. Press ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 2: sudokucurrentrowanimation = 1: Exit Sub
                     Case "W", "w"
                         If sudokucurrentrow > 0 Then sudokucurrentrow = sudokucurrentrow - 1
@@ -3441,39 +3441,39 @@ Private Const SW_SHOW = 5
                 Select Case TextboxInput.Text
                     Case "1"
                         sudokucurrentcolumn = 1
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "2"
                         sudokucurrentcolumn = 2
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "3"
                         sudokucurrentcolumn = 3
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "4"
                         sudokucurrentcolumn = 4
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "5"
                         sudokucurrentcolumn = 5
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "6"
                         sudokucurrentcolumn = 6
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "7"
                         sudokucurrentcolumn = 7
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "8"
                         sudokucurrentcolumn = 8
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "9"
                         sudokucurrentcolumn = 9
-                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Enter ""0"" for ""Clear"", ""WASD"" for selection change"
+                        LabelStatusbar.Caption = "Filled " & sudokutotalfilled & "/" & sudokutotalfilling & " --- Please fill the block. Press ""0"" for ""Clear"", ""WASD"" for selection change"
                         TextboxInput.Text = "": gameinputstep = 3: sudokucurrentcolumnanimation = 1: Exit Sub
                     Case "W", "w"
                         If sudokucurrentrow > 0 Then sudokucurrentrow = sudokucurrentrow - 1
